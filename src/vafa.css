@@ -189,6 +189,20 @@ hr{
   padding-top:0.5%;
 
 }
+.checkout-container {
+  background-color: #ffffff;
+  margin-top: 1.5%;
+  width: 52%;
+  height: 130vh;
+  margin-left: 24%;
+  border-color: #d67d20;
+  border-radius: 9px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.17);
+  padding-top:0.5%;
+  padding-left:0.5%;
+  padding-right:0.5%
+
+}
 
 .settings-container-admin {
   background-color: #ffffff;
@@ -215,6 +229,15 @@ hr{
   margin-top: 2%;
   margin-bottom: -1%;
 }
+
+.checkout-heading {
+  font-size: 32px;
+  color: #2e2e2e;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: -1%;
+}
+
 
 .settings-form{
   margin-top:-4%;
@@ -475,4 +498,20 @@ hr{
   font-size:14px;
   color: #d67d20;
   margin-left: -1%;
+}
+
+.checkbox-form-new{
+  font-size: 15px;
+  margin-left: 5%;
+  vertical-align: middle;
+}
+
+input[type="radio"]{
+  vertical-align: middle;
+  margin-right: 7px;
+}
+input[type="checkbox"]{
+  vertical-align: middle;
+  margin-right: 7px;
+
 }

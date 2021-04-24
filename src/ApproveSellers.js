@@ -37,7 +37,7 @@ const ApproveSellers = () => {
   async function sendData() {
 
     const response = await fetch(
-      `http://apnay-rung-api.herokuapp.com/seller/${approval}/${id} `,
+      `https://apnay-rung-api.herokuapp.com/seller/${approval}/${id} `,
       {
         method: "PATCH",
         withCredentials: true,
@@ -61,7 +61,7 @@ const ApproveSellers = () => {
   const [url, setURL]= useState(0)
 
   async function getImage(seller_id) {
-    setURL(`http://apnay-rung-api.herokuapp.com/seller/cnic/${seller_id}`)
+    setURL(`https://apnay-rung-api.herokuapp.com/seller/cnic/${seller_id}`)
     setPictureModal(true)
   }
 
@@ -69,7 +69,7 @@ const ApproveSellers = () => {
 
 
     const response = await fetch(
-      "http://apnay-rung-api.herokuapp.com/notification/new",
+      "https://apnay-rung-api.herokuapp.com/notification/new",
       {
         method: "POST",
         withCredentials: true,
@@ -134,7 +134,7 @@ const ApproveSellers = () => {
       return response.json();
     }
 
-    getData("http://apnay-rung-api.herokuapp.com/seller/all/unapproved").then(
+    getData("https://apnay-rung-api.herokuapp.com/seller/all/unapproved").then(
       (response) => {
         console.log(response);
         setState(response);

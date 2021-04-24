@@ -58,7 +58,7 @@ const AddQuery = () =>{
   async function sendNotification(sellerID,title) {
 
     const response = await fetch(
-      "http://apnay-rung-api.herokuapp.com/notification/new",
+      "https://apnay-rung-api.herokuapp.com/notification/new",
       {
         method: "POST",
         withCredentials: true,

@@ -94,7 +94,7 @@ const SellerNavbar = () => {
                 
             </div>
             <div className="navbar-nav ml-auto">
-                <Link to="/SellerPanel">
+                <Link to="/Notifications">
                     <a className="nav-item nav-link">
                     <Badge badgeContent={numNotif} color="secondary">
                         <NotificationsNoneIcon />
