@@ -81,9 +81,10 @@ const CreateTutorial = () =>{
             {checkSession()}
             <AdminNavbar/>
             <Memory panel="Admin" page="Tutorials" current="Create Tutorial"/>
-            <div className="min-height-div">
-            <h1>Create New Tutorial</h1>
-            <form className="form-product">
+            <div className="min-height-div" className="image-product">
+              <div className="tutorial-container">
+              <div className="checkout-heading">Create New Tutorial</div>
+                <form className="form-product">
                 <p className="label-form"> Title </p>
                 <input
                 className="input-form"
@@ -95,7 +96,7 @@ const CreateTutorial = () =>{
                 ></input>
                 <p className="label-form">Description</p>
                 <textarea
-                className="input-des"
+                className="tutorial-des"
                 type="text"
                 name="description"
                 placeholder="Enter descrtiption to explain what the video is about"
@@ -116,14 +117,13 @@ const CreateTutorial = () =>{
                 <div className="checkout-buttons">
                 <input
                     type="submit"
-                    className="submit-button2"
-                    value="Create Tutorial"
+                    className="create-tutorial-btn"
+                    value="Create"
                     onClick={SubmitHandler}
                 ></input>
                 </div>
-            </form>
-            <br/>
-            <br/>
+              </form>
+              </div>
             </div>
             <BottomBar/>
             <Modal show={show} onHide={handleClose} className="delete-modal">

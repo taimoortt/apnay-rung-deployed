@@ -133,9 +133,9 @@ const AddQuery = () =>{
       <div >
           {checkSession()}
           <CustomerNavbar/>
-          <Memory panel="Customer Panel" current="Forms"/>
-          <div className="min-height-div">
-          <h1>Contact Apnay Rung</h1>
+          <Memory panel="Customer Panel " current=" Contact Us"/>
+          <div className="min-height-div image-product">
+          <div className="tutorial-container">
           <div>
               <h3 className="contact-form">Hello {userstate.name}!</h3>
               
@@ -168,7 +168,7 @@ const AddQuery = () =>{
               <input
                   type="submit"
                   className="submit-button2"
-                  value="Submit"
+                  value="Send"
                   onClick={SubmitHandler}
               ></input>
               </div>
@@ -176,6 +176,9 @@ const AddQuery = () =>{
               </form>
               <br/>
           </div>
+          </div>
+          <br/>
+          <br/>
           </div>
           <BottomBar/>
           <Modal show={show} onHide={handleClose} className="delete-modal">

@@ -114,8 +114,6 @@ const UpdateProduct = () => {
     setImageUpdate(true);
   };
 
-  
-
   const setFile = (event) => {
     event.preventDefault();
     if (values.tempFile){

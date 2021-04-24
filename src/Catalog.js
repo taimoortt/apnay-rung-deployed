@@ -66,11 +66,30 @@ const Catalog = () => {
         }
         else
         {
-            console.log("didnt mathc anywhere")
+          const getData = async (url) => {
+            const response = await fetch(url, {
+              method: "GET",
+              withCredentials: false
+            });
+            return response.json();
+          };
+          getData("https://apnay-rung-api.herokuapp.com/inventory/all").then(
+            (response) => {
+              setState(response);
+              console.log(response)
+              // console.log("in use effect")
+            }
+          );
         }
     }
   }
-  useEffect(() => {
+
+  const sendID = (product) => {
+    sessionStorage.removeItem("productID");
+    sessionStorage.removeItem("map_province");
+    sessionStorage.setItem("productID", JSON.stringify(product));
+  };
+  const callAll = ()=>{
     const getData = async (url) => {
       const response = await fetch(url, {
         method: "GET",
@@ -82,16 +101,11 @@ const Catalog = () => {
       (response) => {
         setState(response);
         console.log(response)
-        console.log("in use effect")
+        // console.log("in use effect")
       }
     );
-  }, [callEffect]);
 
-  const sendID = (product) => {
-    sessionStorage.removeItem("productID");
-    sessionStorage.removeItem("map_province");
-    sessionStorage.setItem("productID", JSON.stringify(product));
-  };
+  }
 
   const renderProducts = () => {
     return state.filter((product,index)=>{
@@ -247,7 +261,9 @@ const Catalog = () => {
             MapProvinces()
         }
     }
- 
+  // const checkEffect = ()=>{
+  //   setCallEffect
+  // }
   return (
     <div>
       {GetNavbar()}
@@ -258,23 +274,23 @@ const Catalog = () => {
       <br></br>
       <ul className="sortbar">
         <li className="dropbtn">
-          <a onClick={()=>{setCallEffect(!callEffect)}}>All Products</a>
+          <a onClick={()=>callAll()}>All Products</a>
         </li>
         <li className="dropbtn">
-          <a onClick={SortAlpha}>Sort A-Z</a>
+          <a onClick={()=>SortAlpha()}>Sort A-Z</a>
         </li>
         <li className="dropbtn">
-          <a onClick={SortPriceAsc}>Price (Low to High)</a>
+          <a onClick={()=>SortPriceAsc()}>Price (Low to High)</a>
         </li>
         <li className="dropdown">
           <li className="dropbtn">Filter by Region
           <div className="dropdown-content" id="mydropdown">
-            <a onClick={PunjabProducts}>Punjab</a>
-            <a onClick={SindhProducts}>Sindh</a>
-            <a onClick={BalochistanProducts}>Balochistan</a>
-            <a onClick={KPKProducts}>KPK</a>
-            <a onClick={GilgitProducts}>Gilgit-Baltistan</a>
-            <a onClick={KashmirProducts}>Kashmir</a>
+            <a onClick={()=>PunjabProducts()}>Punjab</a>
+            <a onClick={()=>SindhProducts()}>Sindh</a>
+            <a onClick={()=>BalochistanProducts()}>Balochistan</a>
+            <a onClick={()=>KPKProducts()}>KPK</a>
+            <a onClick={()=>GilgitProducts()}>Gilgit-Baltistan</a>
+            <a onClick={()=>KashmirProducts()}>Kashmir</a>
           </div>
           </li>
         </li>
