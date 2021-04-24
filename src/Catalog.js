@@ -235,7 +235,7 @@ const Catalog = () => {
             });
             return response.json();
             };
-            getData("https://apnay-rung-api.herokuapp.com/inventory/location/Gilgit-Balistan").then(
+            getData("https://apnay-rung-api.herokuapp.com/inventory/location/Gilgit-Baltistan").then(
             (response) => {
                 setState(response);
                 console.log(response)

@@ -8,7 +8,7 @@
   margin: 0%;
 }
 h1 {
-  margin-top: 1%;
+  margin-top: 1% !important;
   font-size: 42px;
   text-align: center;
   color: #2e2e2e;
@@ -866,21 +866,17 @@ h4 {
 }
 
 .home-background {
-  margin-top: 1%;
-  position: relative;
   height: 350px;
   width: 100% !important;
 }
 .home-text {
   z-index: 0;
-  /* display: inline; */
   position: absolute;
-  margin-left: 16.5%;
-  margin-right: 11.5%;
-  top: 57%;
+  text-align: center !important;
+  top: 45%;
   color: #ffffff;
-  font-size: 290%;
-  font-display: bold;
+  font-size: 350%;
+
 }
 .main {
   width: 80%;
@@ -912,38 +908,59 @@ h4 {
 }
 .orange-home-bar {
   background-color: #d67d20;
-  height: 5%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
   color: #ffffff;
   text-align: center;
-  margin-top: 5%;
-  width: 90%;
-  margin-left: 5%;
+  margin-top: 1%;
+  width: 100% !important;
 }
 .orange-home-bar p {
   margin-top: 1%;
   margin-bottom: 1%;
+  font-size: larger;
+  font-weight: 400;
 }
+.grey-grey {
+  background-color: #efefef;
+  width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  text-align: center;
 
+}
+.space-bottom{
+  margin-top: 15%;
+}
+.home-main-title{
+  position:relative;
+  margin-top: 1%;
+}
+.main-sellers{
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 .grey-home-bar {
   background-color: #efefef;
   height: 5%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
   color: #2e2e2e;
   text-align: center;
-  text-decoration: underline;
-  text-decoration-color: #d67d20;
-  font-size: medium;
-  width: 90%;
-  margin-left: 5%;
+  /* text-decoration: underline;
+  text-decoration-color: #d67d20; */
+  font-size: large;
+  font-weight: 400;
+  width: 100% !important;
+  /* margin-left: 5%; */
 }
 
 .grey-home-bar p {
   margin-top: 1%;
   margin-bottom: 1%;
-  margin-bottom: 2%;
 }
 .seller-main {
   margin-left: 13%;
@@ -953,13 +970,12 @@ h4 {
 }
 
 .main-artist-image {
-  margin-left: 18%;
   margin-top: 2%;
   border-radius: 50%;
   width: 175px;
   height: 175px;
-  box-shadow: 0px 0px 15px 1px #d67d20;
-  margin-bottom: 1%;
+  box-shadow: 0px 0px 13px 1px #d67d20;
+  margin-bottom: 3%;
 }
 .seller-main p {
   margin-top: 6px;
@@ -968,7 +984,8 @@ h4 {
 }
 .main-text-seller {
   color: #d67d20;
-  font-weight: bold;
+  font-weight: 500;
+  margin-bottom: 0;
 }
 .table-home {
   background-color: #2e2e2e !important;
@@ -1106,17 +1123,7 @@ h4 {
   background-repeat: no-repeat;
   padding: 30px;
 }
-.home-text {
-  z-index: 0;
-  /* display: inline; */
-  position: absolute;
-  margin-left: 14%;
-  margin-right: 11.5%;
-  top: 49.5%;
-  color: #ffffff;
-  font-size: 320%;
-  font-display: bold;
-}
+
 .featured-prod {
   
   margin-left: 4.5%;

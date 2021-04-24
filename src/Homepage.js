@@ -93,7 +93,7 @@ const Homepage = () => {
         return response.json();
       };
    
-      getData2("https://apnay-rung-api.herokuapp.com/seller/limit/3").then(
+      getData2("https://apnay-rung-api.herokuapp.com/seller/limit/6").then(
         (response) => {
           setSellerState(response);
         }
@@ -122,7 +122,7 @@ const Homepage = () => {
     return sellerState.map((seller, index) => {
       const { name, location, profile_picture } = seller;
       return (
-        <div className="seller-main">
+        <div className="grey-main">
           <Link to="/Artisans">
           <img
             className="main-artist-image"
@@ -146,9 +146,10 @@ const Homepage = () => {
       <span>
         <img className="logo-main" src={TopHeading} alt="logo" />
       </span>
-
+      <div className="home-main-title">
         <img className="home-background" src={home} alt="home" />
         <h2 className="home-text">DISCOVER | CONNECT | EMPOWER</h2>
+      </div>
 
       <p className="featured-prod">Featured Products </p>
       <div className="itemboxes">{renderProducts()}</div>
@@ -223,35 +224,33 @@ const Homepage = () => {
         />
       </div>
       <br />
-      <br />
-      <br />
-      <div className="grey-home-bar">
+      <div className="orange-home-bar">
         <p className ="artist-title">Face of the Art</p>
       </div>
-      <div className="">{renderSellers()}</div>
+      <div className="main-sellers">{renderSellers()}</div>
       <div className="grey-grey">
         <div className="grey-main">
         <img className="end-main-image" src={handshake} alt="end" />
         <div className="home-text-down">Trustworthy Sellers</div>
-        <div>We care about authenticity: our sellers are verified and trustworthy.</div>
-    
+        <div className="bottom-text">We care about authenticty and ensure our sellers are verified and trustworthy.</div>
+        <div className="space-bottom"></div>
         </div>
         <div className="grey-main">
         <img className="end-main-image" src={wpf} alt="end" />
         <div className="home-text-down">Cooperative Support Team</div>
-        <div>In case you have any query of concern, our team is happy to assist.</div>
-        
+        <div className="bottom-text">In case you have any query of concern, our team is happy to assist.</div>
+        <div className="space-bottom"></div>
         </div>
         <div className="grey-main">
         <img className="end-main-image" src={gpp} alt="end" />
         <div className="home-text-down">High Quality Products</div>
-        <div>Apnay Rung ensures that our customers always receive top quality
+        <div className="bottom-text">Apnay Rung ensures that our customers always receive top quality
         products.</div>
+        <div className="space-bottom"></div>
         </div>
+        
       </div> 
-      <br />
-      <br />
-      <br />
+      {/* <br /> */}
       
       <BottomBar />
       <Modal show={show} onHide={handleClose} className="delete-modal">
