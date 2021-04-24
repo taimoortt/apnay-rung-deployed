@@ -903,14 +903,11 @@ h4 {
 }
 .home-text {
   z-index: 0;
-  /* display: inline; */
   position: absolute;
-  margin-left: 16.5%;
-  margin-right: 11.5%;
-  top: 57%;
+  text-align: center !important;
+  top: 45%;
   color: #ffffff;
-  font-size: 290%;
-  font-display: bold;
+  font-size: 320%;
 }
 .main {
   width: 80%;
