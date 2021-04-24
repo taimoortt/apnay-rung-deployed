@@ -85,7 +85,7 @@ const ViewSellers = () => {
   async function sendSpotlight(sellerID) {
 
     const response = await fetch(
-      ` http://apnay-rung-api.herokuapp.com/seller/spotlight/${sellerID}`,
+      ` https://apnay-rung-api.herokuapp.com/seller/spotlight/${sellerID}`,
       {
         method: "PATCH",
         withCredentials: true,
@@ -106,6 +106,23 @@ const ViewSellers = () => {
   }
 
   useEffect(() => {
+
+    const filterSeller= (response) => {
+      let allSellers=[]
+      response.map((seller,index)=>{
+        const {approved}= seller
+        if(approved===true){
+          try{
+            allSellers.push(seller)
+          }
+          catch{
+            allSellers[0]=seller
+          }
+        }
+      })
+      return allSellers
+    }
+
     async function getData(url) {
       const response = await fetch(url, {
         method: "GET",
@@ -124,7 +141,9 @@ const ViewSellers = () => {
     getData("https://apnay-rung-api.herokuapp.com/seller/all").then(
       (response) => {
         console.log(response);
-        setState(response);
+        const sellers= filterSeller(response)
+        setState(sellers);
+        console.log(state)
       }
     );
   }, [callEffect]);

@@ -39,7 +39,7 @@ const ViewOrders = () => {
       return response.json();
     }
 
-    getData("http://apnay-rung-api.herokuapp.com/order/all ").then(
+    getData("https://apnay-rung-api.herokuapp.com/order/all ").then(
       (response) => {
         console.log(response);
         setState(response);

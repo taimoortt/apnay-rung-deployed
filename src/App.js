@@ -14,7 +14,7 @@ import Notifications from "./Notifications"
 
 // Admin Pages
 import AdminPanel from "./AdminPanel";
-import ViewAllOrders from "./ViewOrders";
+import ViewOrders from "./ViewOrders";
 import QueryForms from "./QueryForms";
 import ViewSellers from "./ViewSellers"
 import ViewAllProducts from "./ViewAllProducts";
@@ -23,6 +23,7 @@ import CreateTutorial from "./CreateTutorial";
 import Tutorials from "./Tutorials";
 import UpdateTutorial from "./UpdateTutorial";
 import ViewCustomers from "./ViewCustomers";
+import ApproveSellers from "./ApproveSellers";
 
 // Customer Pages
 import CustomerPanel from "./CustomerPanel";
@@ -43,6 +44,7 @@ import ViewTutorials from "./ViewTutorials";
 import Inventory from "./Inventory";
 import UpdateProduct from "./UpdateProduct";
 import ViewCurrentOrders from "./ViewCurrentOrders";
+import AddProduct from "./AddProduct";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 export default function App() {
@@ -52,8 +54,8 @@ export default function App() {
         <div className="App">
           {/* //  Admin Pages */}
           <Route path="/AdminPanel" exact component={AdminPanel} />
-          <Route path="/ViewAllOrders" exact component={ViewAllOrders} />
-          <Route path="/ViewQueryForms" exact component={QueryForms} />
+          <Route path="/ViewOrders" exact component={ViewOrders} />
+          <Route path="/QueryForms" exact component={QueryForms} />
           <Route path="/ViewSellers" exact component={ViewSellers} />
           <Route path="/ViewAllProducts" exact component={ViewAllProducts} />
           <Route path="/AdminSettings" exact component={AdminSettings} />
@@ -61,6 +63,7 @@ export default function App() {
           <Route path="/Tutorials" exact component={Tutorials} />
           <Route path="/UpdateTutorial" exact component={UpdateTutorial} />
           <Route path="/ViewCustomers" exact component={ViewCustomers} />
+          <Route path="/ApproveSellers" exact component={ApproveSellers} />
 
 
 
@@ -88,6 +91,7 @@ export default function App() {
           <Route path="/ViewTutorials" exact component={ViewTutorials} />
           <Route path="/Inventory" exact component={Inventory} />
           <Route path="/UpdateProduct" exact component={UpdateProduct} />
+          <Route path="/AddProduct" exact component={AddProduct} />
           <Route path="/ViewCurrentOrders" exact component={ViewCurrentOrders} />
 
 

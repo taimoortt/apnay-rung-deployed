@@ -88,7 +88,7 @@ const AdminNavbar = () => {
                 <a className="nav-item nav-link">Catalog</a>
                 </Link>
                 <Link to="/QueryForms">
-                <a className="nav-item nav-link">Contact</a>
+                <a className="nav-item nav-link">Forms</a>
                 </Link>
                 {/* <a  className="nav-item nav-link disabled" tabindex="-1">Contact</a> */}
             </div>

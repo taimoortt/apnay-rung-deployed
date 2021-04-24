@@ -108,10 +108,11 @@ const Checkout = () => {
         page="Shopping Cart"
         current=" Checkout"
       />{" "}
-      <div className="min-height-div">
-      <h1>Checkout</h1>
-      <form className="form-product" onSubmit={SubmitHandler}>
-        <p className="label-form"> Customer Name </p>
+      <div className="min-height-div" className="image-product">
+      <div className="checkout-container">
+      <div className="checkout-heading">Checkout</div>
+      <form className="form-checkout" onSubmit={SubmitHandler}>
+        <p className="label-form-checkout"> Customer Name </p>
         <input
           className="input-form"
           type="text"
@@ -119,7 +120,7 @@ const Checkout = () => {
           value={name}
           onChange={NameChangeHandler}
         ></input>
-        <p className="label-form"> Customer Email Address </p>
+        <p className="label-form-checkout"> Customer Email Address </p>
         <input
           className="input-form"
           type="email"
@@ -127,7 +128,7 @@ const Checkout = () => {
           value={email}
           onChange={EmailChangeHandler}
         ></input>
-        <p className="label-form"> Customer Phone Number </p>
+        <p className="label-form-checkout"> Customer Phone Number </p>
         <input
           className="input-form"
           type="text"
@@ -135,7 +136,7 @@ const Checkout = () => {
           value={phone}
           onChange={PhoneChangeHandler}
         ></input>
-        <p className="label-form">Shipping Address</p>
+        <p className="label-form-checkout">Shipping Address</p>
         <input
           className="input-form"
           type="text"
@@ -143,7 +144,7 @@ const Checkout = () => {
           value={ship_address}
           onChange={ShippingChangeHandler}
         ></input>
-        <p className="label-form">Billing Address</p>
+        <p className="label-form-checkout">Billing Address</p>
         <label className="checkbox-form-new">
           <input
             // className="checkbox-form"
@@ -161,7 +162,7 @@ const Checkout = () => {
           value={bill_address}
           onChange={BillingAddressAdd}
         ></input>
-        <p className="label-form">Additional Information</p>
+        <p className="label-form-checkout">Additional Information</p>
         <textarea
           className="input-des"
           type="text"
@@ -171,7 +172,7 @@ const Checkout = () => {
           rows="4"
           cols="50"
         ></textarea>
-        <p className="label-form">Payment Method</p>
+        <p className="label-form-checkout">Payment Method</p>
         <label className="checkbox-form-new">
           <input
             // className="radio-label"
@@ -199,11 +200,10 @@ const Checkout = () => {
           to us by mail or by WhatsApp to confirm your order.
           <br /> IBAN: PK48HABB12345678910
         </p>{" "}
-        <div className="checkout-buttons">
           <Link to="/ShoppingCart">
           <input
             type="submit"
-            className="submit-button2"
+            className="return-to-cart-btn"
             value="Return to Cart"
           ></input>
           </Link>
@@ -215,10 +215,8 @@ const Checkout = () => {
             onClick={SubmitHandler}
           ></input>
           </Link>
-        </div>
       </form>
-      <br />
-      <br />
+      </div>
       <br />
       </div>
       <BottomBar />

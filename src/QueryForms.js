@@ -78,7 +78,7 @@ const QueryForms = () => {
   async function sendNotification(customerID) {
 
     const response = await fetch(
-      "http://apnay-rung-api.herokuapp.com/notification/new",
+      "https://apnay-rung-api.herokuapp.com/notification/new",
       {
         method: "POST",
         withCredentials: true,

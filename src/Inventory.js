@@ -10,17 +10,11 @@ const Inventory = () => {
   let tokenID = sessionStorage.getItem("Token");
 
   const session = sessionStorage.getItem("logged-in");
-  const [state, setState] = useState([
-    {
-      image: "",
-      title: "",
-      price: 0,
-      quantityInStock: 0
-    }
-  ]);
+  const [state, setState] = useState([]);
 
   const [callEffect,setCallEffect]= useState(false)
   const usertype = sessionStorage.getItem("TypeOfUser");
+  const [empty,SetEmpty]=useState(false)
 
   const checkSession = () => {
       if (session === false || session === null || usertype==="admin" || usertype==="customer"){
@@ -44,9 +38,17 @@ const Inventory = () => {
       return response.json();
     }
 
+    console.log(`hello jee`)
     getData("https://apnay-rung-api.herokuapp.com/inventory/all/mine").then(
       (response) => {
+        console.log(response)
+        console.log(`length`,response.length)
+        if(response.length===0)
+        {
+          SetEmpty(true)
+        }
         setState(response);
+        
       }
     );
   }, [callEffect]);
@@ -172,6 +174,22 @@ const Inventory = () => {
             onClick={()=>handleClose(true)}
           >
             Delete Product
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={empty} onHide={()=>handleClose(false)} className="delete-modal">
+        <Modal.Header closeButton>
+          <Modal.Title>Inventory is Empty!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>You have not added any products yet</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            className="delete-primary"
+            onClick={()=>handleClose(false)}
+          >
+            <Link to="./AddProduct">Add Products</Link>
           </Button>
         </Modal.Footer>
       </Modal>

@@ -7,12 +7,10 @@ const Memory = (props, panel) => {
   let panel_string = ``
   try{
     panel = props.panel.split(" ").join("");
-      // console.log(props.panel);
-    let panel_string = `/${panel}`;
+    panel_string = `/${panel}`;
   }catch{
     panel_string = ``;
   }
-  
 
 
   let current_string = "";
