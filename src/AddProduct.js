@@ -16,9 +16,8 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [values, setValues] = useState({
-    fileName:"",
+    fileName:"Click here to choose file",
     file: "",
-    tempFile: ""
   });
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
@@ -52,16 +51,17 @@ const AddProduct = () => {
   const fileHandler = (e) => {
     console.log(e.target.files[0])
     setValues({
-      fileName: "",
-      file: e.target.files[0],
+      ...values,
+      [e.target.name]: e.target.files[0],
       tempFile: e.target.files[0].name
     });
+    values.tempFile = values.file.name;
     // values.tempFile = values.file.name;
     console.log(values);
   };
 
-  const setFile = (event) => {
-    event.preventDefault();
+  
+  const setFile = () => {
     if (values.tempFile){
       values.fileName = values.tempFile
     }
@@ -127,12 +127,13 @@ const AddProduct = () => {
   };
 
   return (
-    <div >
+    <div>
       {checkSession()}
       <SellerNavbar />
       <Memory panel="Seller Panel " page="" current=" Add Product" />{" "}
-      <div className="min-height-div">
-      <h1>Add Product</h1>
+      <div className="min-height-div" className="image-product">
+        <div className="product-container">
+      <div className="product-heading">Add Product</div>
       <form
           enctype="multipart/form-data"
           method="POST"
@@ -161,7 +162,7 @@ const AddProduct = () => {
         ></textarea>
         <p className="label-form"> Product Category </p>
         <select
-          className="input-form"
+          className="category-dropdown"
           name="category"
           // value="Bags"
           onChange={CategoryChangeHandler}
@@ -175,20 +176,21 @@ const AddProduct = () => {
           <option value="Crockery">Crockery</option>
         </select>
         <p className="label-form">Upload Product Image</p>
-        <div>
-            <label for="upload-photo" className="input-form">
+        <span>
+            <label for="upload-photo" className="upload-file-product">
               {values.fileName}
             </label>
             <input
               type="file"
               name="image"
               accept="image/*, application/pdf"
+              placeholder="Click here to choose image"
               onChange={fileHandler}
               id="upload-photo"
               required
             />
             <button className="upload" onClick = {setFile}>Upload</button>
-          </div>
+          </span>
         <p className="label-form">Product Price</p>
         <input
           className="input-form"
@@ -212,10 +214,13 @@ const AddProduct = () => {
           <input
             type="submit"
             className="submit-button2"
-            value="Submit"
+            value="Done"
           ></input>
         </div>
       </form>
+      </div>
+      <br/>
+      <br/>
       </div>
       <BottomBar />
       <Modal show={show} onHide={handleClose} className="delete-modal">

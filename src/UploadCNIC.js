@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./css/logo.png";
+import { Modal, Button} from "react-bootstrap";
+
 
 const UploadCNIC = () => {
   const [values, setValues] = useState({
@@ -17,6 +19,14 @@ const UploadCNIC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [check, setCheck] = useState([]);
   const [button, setButton] = useState(`true`);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+    window.location.href = "/SignupSeller";
+
+  }
+  const handleShow = () => setShow(true);
 
 
   const submitForm = () => {
@@ -125,12 +135,15 @@ const UploadCNIC = () => {
     let serverResponse; 
     if (check.length > 0){
       serverResponse = await postData();
-      console.log(`got here`);
-      console.log(serverResponse);
+      console.log(`got here`, serverResponse);
       if (serverResponse.status === 201) {
         console.log(`finally here`);
         sendNotification()
         
+      }else if (serverResponse.status === 400){
+        console.log(`in failed`)
+        handleShow();
+
       }
     }
   };
@@ -327,6 +340,15 @@ const UploadCNIC = () => {
         {!isSubmitted ? displayPage() : ""}
         {/* <SignupSuccess /> */}
       </div>
+      <Modal show={show} onHide={handleClose} className="delete-modal">
+        <Modal.Header closeButton className="modal-heading">
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>An account exists with this email.</Modal.Body>
+        <Modal.Footer>
+
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

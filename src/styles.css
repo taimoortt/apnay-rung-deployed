@@ -167,6 +167,8 @@ h3 {
   padding-top: 4px !important;
   padding-bottom: 4.3px !important;
 }
+
+
 .navbar p {
   padding-top: 0%;
   /* padding-bottom: 4%; */
@@ -479,7 +481,7 @@ table th {
   padding-top: 30%;
 }
 .form-product {
-  margin-top: 1%;
+  margin-top: 2.5%;
 }
 .label-form-cp {
   text-align: left;
@@ -522,8 +524,8 @@ table th {
 .label-form {
   text-align: left;
   margin-left: 5%;
-  margin-top: 1%;
-  font-size: 13.5px;
+  margin-top: 2%;
+  font-size: 15px;
 }
 .label-button {
   margin-top: 1%;
@@ -545,6 +547,7 @@ input[type="file"] {
 }
 
 .input-form {
+  font-size: 15px;
   justify-content: left;
   width: 90%;
   height: 30px;
@@ -554,6 +557,34 @@ input[type="file"] {
   padding: 0.5%;
   border-radius: 7px;
   border: 1px solid #e5e5e5;
+}
+.category-dropdown{
+  color: #979595;
+  justify-content: left;
+  width: 90%;
+  height: 30px;
+  margin-left: 5%;
+  margin-top: -3%;
+  /* margin-top: 1%; */
+  padding: 0.5%;
+  border-radius: 7px;
+  border: 1px solid #e5e5e5;
+}
+.category-dropdown-update{
+  color: #000;;
+  justify-content: left;
+  width: 90%;
+  height: 30px;
+  margin-left: 5%;
+  margin-top: -3%;
+  /* margin-top: 1%; */
+  padding: 0.5%;
+  border-radius: 7px;
+  border: 1px solid #e5e5e5;
+}
+.input-form placeholder{
+  font-size: 14px;
+  color: #2e2e2e;
 }
 .input-des {
   text-align: left;
@@ -590,15 +621,31 @@ input[type="file"] {
   margin-right: 5%;
 }
 .submit-button2 {
-  /* width: 12%; */
-  width: fit-content;
-  height: 34px;
+  width: 15%;
+  font-size: 13px;
+  height: 26px;
   background-color: #d67d20;
-  color: #efefef;
+  color: #ffffff;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  margin-top: 2%;
+  margin-top: 4%;
+  /* margin-left: 30%; */
+  margin-right: 8%;
+  float: right;
+  display: block;
+
+}
+.update-button2 {
+  width: 14%;
+  font-size: 13px;
+  height: 26px;
+  background-color: #d67d20;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 4%;
   /* margin-left: 30%; */
   margin-right: 5%;
   float: right;

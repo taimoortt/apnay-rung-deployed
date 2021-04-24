@@ -14,9 +14,8 @@ const UpdateProduct = () => {
   const [imageUpdate, setImageUpdate] = useState(false);
   const [show, setShow] = useState(false);
   const [values, setValues] = useState({
-    fileName:"",
+    fileName:"Click to update image",
     file: "",
-    tempFile: ""
   });
   const [title, setTitle] = useState(productData.title);
   const [description, setDescription] = useState(productData.description);
@@ -107,12 +106,15 @@ const UpdateProduct = () => {
   const fileHandler = (e) => {
     console.log(e.target.files[0])
     setValues({
-      fileName: "",
-      file: e.target.files[0],
+      ...values,
+      [e.target.name]: e.target.files[0],
       tempFile: e.target.files[0].name
     });
+    values.tempFile = values.file.name;
     setImageUpdate(true);
   };
+
+  
 
   const setFile = (event) => {
     event.preventDefault();
@@ -149,7 +151,9 @@ const UpdateProduct = () => {
       {checkSession()}
       <SellerNavbar />
       <Memory panel="Seller Panel " page="" current=" Update Product" />{" "}
-      <h1>Update Product</h1>
+      <div className="min-height-div" className="image-product">
+      <div className="product-container">
+      <div className="product-heading">Update Product</div>
       <form
           enctype="multipart/form-data"
           method="POST"
@@ -176,7 +180,7 @@ const UpdateProduct = () => {
         ></textarea>
         <p className="label-form"> Product Category </p>
         <select
-          className="input-form-dropdown"
+          className="category-dropdown-update"
           name="category"
           value={category}
           onChange={CategoryChangeHandler}
@@ -191,7 +195,7 @@ const UpdateProduct = () => {
         </select>
         <p className="label-form">Upload Product Image</p>
         <div>
-            <label for="upload-photo" className="input-form">
+            <label for="upload-photo" className="upload-file-product">
               {values.fileName}
             </label>
             <input
@@ -220,17 +224,16 @@ const UpdateProduct = () => {
           onChange={StockChangeHandler}
         ></input>
         <br />
-        <div className="checkout-buttons">
           <input
             type="submit"
-            className="submit-button2"
-            value="Update Product"
+            className="update-button2"
+            value="Update"
           ></input>
-        </div>
       </form>
+      </div>
       <br/>
       <br/>
-      <br/>
+      </div>
       <BottomBar />
       <Modal show={show} onHide={handleClose} className="delete-modal">
         <Modal.Header closeButton>

@@ -24,7 +24,7 @@ const SignupSeller = () => {
       "Punjab",
       "Sindh",
       "Balochistan", 
-      "Khyber Pakhtunkhwa", 
+      "KPK", 
       "Kashmir", 
       "Gilgit-Baltistan"
     ]
@@ -227,7 +227,7 @@ const SignupSeller = () => {
                   title={province}
                   // name="question1"
                   // onChange={changeHandler}
-                  value={values.address}
+                  value={province}
                 >
                   {province}
                 </option>
