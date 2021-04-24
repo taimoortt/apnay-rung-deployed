@@ -89,8 +89,10 @@ const CreateTutorial = () =>{
         <div>
             <AdminNavbar/>
             <Memory panel="Admin" page="Tutorials" current="Update Tutorial"/>
-            <div className="min-height-div">
-            <h1>Update Tutorial</h1>
+            <div className="min-height-div image-product" >
+            <div className="tutorial-container">
+
+            <div className="checkout-heading">Update Tutorial</div>
             <form className="form-product">
                 <p className="label-form"> Title </p>
                 <input
@@ -102,7 +104,7 @@ const CreateTutorial = () =>{
                 ></input>
                 <p className="label-form">Description</p>
                 <textarea
-                className="input-des"
+                className="tutorial-des"
                 type="text"
                 name="description"
                 value={description}
@@ -121,12 +123,13 @@ const CreateTutorial = () =>{
                 <div className="checkout-buttons">
                 <input
                     type="submit"
-                    className="submit-button2"
-                    value="Update Tutorial"
+                    className="tutorial-btn"
+                    value="Save"
                     onClick={SubmitHandler}
                 ></input>
                 </div>
             </form>
+            </div>
             <br/>
             <br/>
             </div>

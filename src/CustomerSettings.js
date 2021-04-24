@@ -252,7 +252,7 @@ const CustomerSettings = () => {
       {checkSession()}
       <CustomerNavbar />
       <Memory panel="Customer Panel " page="" current=" Account Settings" />{" "}
-      <div className="min-height-div">
+      <div className="min-height-div image-settings">
         {
           displayPage()
         }

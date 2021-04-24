@@ -42,10 +42,10 @@ const SellerPanel = () => {
       <SellerNavbar />
       <Memory panel="Seller Panel" /> {/* <page="" current="" /> */}
       <div className="min-height-div">
-        <h1>Seller Panel</h1>
-        <br></br>
-        <br></br>
-        <div className="all-boxes">
+      <h1>Seller Panel</h1>
+      <br></br>
+      <br></br>
+      <div className="all-boxes">
         <div className="box-left">
           
           <div className="box-left-left">
@@ -125,7 +125,10 @@ const SellerPanel = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
       <BottomBar />
     </div>
   );

@@ -21,7 +21,6 @@ const SellerSettings = () => {
   let tokenID = sessionStorage.getItem("Token");
   let updatePass = false;
   const session = sessionStorage.getItem("logged-in");
-  const [callEffect,setCallEffect]= useState(false)
   const usertype = sessionStorage.getItem("TypeOfUser");
 
   const checkSession = () => {
@@ -132,7 +131,6 @@ const SellerSettings = () => {
     const serverResponsePicture = await sendPicture()
     console.log(`in submitHandler`, serverResponseData)
     console.log(`in submitHandler`, serverResponsePicture)
-    window.location.href = '/SellerPanel';
 
   }
 
@@ -220,12 +218,12 @@ const SellerSettings = () => {
       }
     }
   );
-  }, [callEffect]);
+  }, []);
 
 
   const displayPage = () => {
     return (
-      <div className="settings-container-seller">
+      <div className="settings-container-seller ">
           <br />
           <div className="settings-heading">Account Settings</div>
           <br />
@@ -337,15 +335,17 @@ const SellerSettings = () => {
   return (
     <div className="bg-color">
       {checkSession()}
-      <SellerNavbar key={callEffect} />
-      <Memory panel="Seller Panel " page="" current=" Account Settings" />{" "}
+      <SellerNavbar />
+      <Memory panel="Customer Panel " page="" current=" Account Settings" />{" "}
       {/* when three links needed in panel, include a '/' in the middle 'page' argument */}
+      <div className="min-height-div image-settings">
         {
           displayPage()
         }
         <br/>
         <br/>
         {/* <BottomBar /> */}
+        </div>
     </div>
   );
 
