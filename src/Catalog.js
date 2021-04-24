@@ -258,7 +258,7 @@ const Catalog = () => {
       <br></br>
       <ul className="sortbar">
         <li className="dropbtn">
-          <a onClick={()=>{setCallEffect(!callEffect)}}>All Products</a>
+          <a onClick={()=>setCallEffect(!callEffect)}>All Products</a>
         </li>
         <li className="dropbtn">
           <a onClick={SortAlpha}>Sort A-Z</a>
