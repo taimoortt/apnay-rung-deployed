@@ -82,6 +82,10 @@ const Catalog = () => {
           );
         }
     }
+    else
+    {
+      callAll();
+    }
   }
 
   const sendID = (product) => {
