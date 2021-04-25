@@ -343,6 +343,7 @@ const SellerSettings = () => {
               type="tel"
               value={phoneNo}
               onChange={handlePhoneNo}
+              required
             ></input>
             <br />
             <p className="label-form">Province</p>

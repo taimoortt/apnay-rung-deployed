@@ -46,11 +46,12 @@ const AddReview = () => {
   let tokenID = sessionStorage.getItem("Token");
   const session = sessionStorage.getItem("logged-in");
   const [callEffect,setCallEffect]= useState(false)
-  // tokenID= `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJUYWltb29yIFRhcmlxIiwidHlwZU9mVXNlciI6ImN1c3RvbWVyIiwiaWF0IjoxNjE2OTYxNzMwfQ.Dn0FATITkhrR7e5tkp_XAmdPfp-FKJGzdskczt9k2fw`;
+  const [empty,SetEmpty]=useState(false)
   const [ind, setIndex] = useState(0)
   const [reviewText, setReviewText] = useState("")
   const [allReviews,setReview]=useState([])
   const [allProducts, setProducts]=useState([])
+  const [isFilled,setFilled]=useState(false)
   let Reviews=[]
   let id=0
   let itemLength=0
@@ -95,25 +96,38 @@ const AddReview = () => {
     (response) => {
       console.log(`customer navbar response: ${response}`)
       const orders= filterOrders(response)
+      if(orders.length===0)
+      {
+        SetEmpty(true)
+      }
       setState(orders);
+      // setIndex(0)
       console.log(state)
+      console.log(`ind is ${ind} ${orders.length}`)
+      if(ind===orders.length)
+      {
+        setIndex((prev)=> prev-1)
+      }
     }
   );
   }, [callEffect]);
 
   const NextPage = () => {
     if(ind <= state.length-2){
-      setIndex((prev)=> prev+1)
       setReviewText("")
       setReview([])
+      setProducts([])
+      setIndex((prev)=> prev+1)
+
     }
   }
 
   const PrevPage = () => {
     if(ind>0){
-      setIndex((prev)=> prev-1)
       setReviewText("")
       setReview([])
+      setProducts([])
+      setIndex((prev)=> prev-1)
     }
   }
 
@@ -222,13 +236,13 @@ const AddReview = () => {
                 onChange={(value)=>ratingChanged(value,index)}
                 size={24}
                 activeColor="#d67d20"
-                key={ind}
+                key={callEffect}
                 />
               </td>
               <td>
                 <form className="form-product">
                 <input
-                  key={ind}
+                  key={callEffect}
                   className="input-form"
                   type="text"
                   name="review"
@@ -257,58 +271,55 @@ const AddReview = () => {
         }
 
       });
-    }catch{
-      return (
-        <div>
-          <Modal
-            show={true}
-            onHide={() => handleClose(false)}
-            className="delete-modal"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title>No orders available</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>There are no orders available for review.</Modal.Body>
-            <Modal.Footer>
-              <Link to="/Catalog">
-                <Button
-                  variant="primary"
-                  onClick={() => handleClose(false)}
-                  className="delete-primary"
-                >
-                  Shop More
-                </Button>
-              </Link>
-            </Modal.Footer>
-          </Modal>
-        </div>
-      );
-    }
+    }catch{}
   };
 
   const [msg, setMsg] = useState([``]);
 
   const makeItemObject = () =>{
 
-    const rating= [...allProducts];
-    const reviews= [...allReviews];
+    let rating= [...allProducts];
+    let reviews= [...allReviews];
     let ratingAndReview=[]
+    let reviewFound= false
 
-    for(let i=0; i<rating.length;i++)
+    if(rating.length<getItemLength())
     {
-      for(let j=0;j<reviews.length;j++)
+      setMsg([`Please enter a rating for all products`,`Back`])
+      handleShow()
+    }
+    else
+    {
+      for(let i=0; i<rating.length;i++)
       {
-        if(rating[i][0]===reviews[j][0])
+        for(let j=0;j<reviews.length;j++)
         {
-          console.log(`here`)
-          let temp=[rating[i][0],rating[i][1],reviews[j][1]]
+          if(rating[i][0]===reviews[j][0])
+          {
+            reviewFound= true
+            console.log(`here`)
+            let temp=[rating[i][0],rating[i][1],reviews[j][1]]
+            ratingAndReview.push(temp)
+          }
+        }
+  
+        if(reviewFound===false)
+        {
+          let temp=[rating[i][0],rating[i][1],""]
           ratingAndReview.push(temp)
         }
+        reviewFound= false
       }
+  
+      console.log(`final sending array is ${ratingAndReview}`)
+      rating=[]
+      reviews=[]
+      sendData(ratingAndReview)
+      
     }
 
-    console.log(`final sending array is ${ratingAndReview}`)
-    sendData(ratingAndReview)
+
+    
   }
 
   async function sendData(items) {
@@ -340,9 +351,15 @@ const AddReview = () => {
       
       setMsg([`Your review has been placed.`, `Back`]);
       handleShow();
-      console.log(`processed ${!callEffect}`)
+      // console.log(`processed ${!callEffect}`)
+      setReviewText("")
+      setReview([])
+      setProducts([])
       setCallEffect(!callEffect)
-      NextPage();
+      // setCallEffect(!callEffect)
+      // setReviewText("")
+      // setReview([])
+      // NextPage();
     } else {
       setMsg([`Your review could not be placed.Try again.`, `Back`]);
       handleShow();
@@ -352,9 +369,19 @@ const AddReview = () => {
 
   const handleClose = () => {
     setShow(false);
-    if(msg[1]===`Back to Panel`)
-    {
-      window.location.href = "/Panel";
+    console.log(`msg is ${msg[0]}`)
+    console.log(`emoty is ${empty}`)
+    // if(msg[0]===`Your review has been placed.`)
+    // {
+    //   console.log(`msg is ${msg[0]}`)
+    //   console.log(`in if condition`)
+    //   setReviewText("")
+    //   setReview([])
+    //   setCallEffect(!callEffect)
+    // }
+    if(empty===true){
+      SetEmpty(false)
+      window.location.href = "/CustomerPanel"; 
     }
   };
 
@@ -416,8 +443,30 @@ const AddReview = () => {
             className="delete-primary"
             onClick={handleClose}
           >
-            {msg[1] !== "Back" ? <Link to="./Panel"><a>{msg[1]}</a></Link> : msg[1]}
+            {msg[1] !== "Back" ? <Link to="./CustomerPanel"><a>{msg[1]}</a></Link> : msg[1]}
           </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={empty}
+        onHide={() => handleClose()}
+        className="delete-modal"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>No orders available</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>There are no orders available for review.</Modal.Body>
+        <Modal.Footer>
+          <Link to="/CustomerPanel">
+            <Button
+              variant="primary"
+              onClick={() => handleClose()}
+              className="delete-primary"
+            >
+              Back to Panel
+            </Button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </div>
