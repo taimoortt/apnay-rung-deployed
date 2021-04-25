@@ -148,7 +148,7 @@ const Homepage = () => {
       </span>
       <div className="home-main-title">
         <img className="home-background" src={home} alt="home" />
-        <h2 className="home-text">DISCOVER | CONNECT | EMPOWER</h2>
+        <div className="home-text">DISCOVER | CONNECT | EMPOWER</div>
       </div>
 
       <p className="featured-prod">Featured Products </p>

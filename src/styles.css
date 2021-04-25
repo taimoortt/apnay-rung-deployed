@@ -953,17 +953,6 @@ h4 {
   height: 350px;
   width: 100% !important;
 }
-.home-text {
-  z-index: 0;
-  /* display: inline; */
-  position: absolute;
-  margin-left: 16.5%;
-  margin-right: 11.5%;
-  top: 57%;
-  color: #ffffff;
-  font-size: 290%;
-  font-display: bold;
-}
 .main {
   width: 80%;
   margin: 50px auto;
@@ -1176,12 +1165,14 @@ h4 {
   padding: 30px;
 }
 .home-text {
-  z-index: 0;
-  position: absolute;
-  text-align: center !important;
-  top: 45%;
-  color: #ffffff;
-  font-size: 350%;
+    z-index: 0;
+    position: absolute;
+    text-align: center !important;
+    top: 45%;
+    color: #ffffff;
+    font-size: 320%;
+    width: 100%;
+}
 
 }
 .featured-prod {

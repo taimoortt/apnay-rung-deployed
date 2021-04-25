@@ -61,8 +61,7 @@ const AboutUs = () => {
                 <div className="our-vision-heading">The story beind the name,<i> Apnay Rung</i> </div>
                 <br />
                 <br />
-                <div className="slogan-text">In recent years, growing westernization has caused Pakistan’s local handicrafts to be abandoned,  posing a threat to both our local artisans and the sacred crafts themselves. This project aims to  correct this by providing a platform to the artisans which will help them popularize these handicrafts  and present them to the world at large.  
- 
+                <div className="slogan-text">In recent years, growing westernization has caused Pakistan’s local handicrafts to be abandoned,  posing a threat to both our local artisans and the sacred crafts themselves. This project aims to  correct this by providing a platform to the artisans which will help them popularize these handicrafts  and present them to the world at large. Apnay Rung specially thanks <a className="ack" href="https://www.vceela.com/" >Vceela</a>, <a className="ack" href="https://womart.pk/">Womart</a>, and <a className="ack" href="https://unsplash.com/">Unsplash</a> for inspiration while building this project.
                 </div>
                 <br />
                 <br />
