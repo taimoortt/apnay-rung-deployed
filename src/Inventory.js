@@ -97,6 +97,11 @@ const Inventory = () => {
     if(changeBlock===true){
       deleteProduct(id)
     }
+    else if(empty===true)
+    {
+      SetEmpty(false)
+      window.location.href = "/SellerPanel"; 
+    }
     
   };
   const renderTableData = () => {
@@ -189,7 +194,7 @@ const Inventory = () => {
             className="delete-primary"
             onClick={()=>handleClose(false)}
           >
-            <Link to="./AddProduct">Add Products</Link>
+            <Link to="./SellerPanel">Back to Panel</Link>
           </Button>
         </Modal.Footer>
       </Modal>

@@ -22,9 +22,14 @@ const SellerSettings = () => {
   const [picture, setPicture] = useState([]);
   const [showPicture, setShowPicture] = useState([]);
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
+  
   
   let tokenID = sessionStorage.getItem("Token");
   let updatePass = false;
@@ -72,7 +77,7 @@ const SellerSettings = () => {
   async function sendPicture() {
     const form = document.getElementById("empty-form");
     const fileObj = new FormData(form);
-    console.log(`picture`, picture)
+    console.log(picture[picture.length-1])
     fileObj.append("profile_picture", picture[picture.length-1]);
     // console.log(temp);
     // console.log(questions_data);
@@ -141,6 +146,7 @@ const SellerSettings = () => {
     const serverResponsePicture = await sendPicture()
 
     console.log(serverResponse)
+    console.log(serverResponsePicture)
     if (serverResponse.status === 400){
       console.log(`in bad request`)
       const responseJSON = await serverResponse.json()
@@ -149,6 +155,13 @@ const SellerSettings = () => {
       if (wrongfields.includes("email") === true){
         console.log(`in wrong email`)
         handleShow()
+      }
+    }else if (serverResponsePicture.status === 500){
+      console.log(`in empty piture`)
+      const check = picture[0].split(':')
+      console.log(`printing chekc`, check)
+      if (check[0] !=="https"){
+        handleShow1()
       }
     }else{
       console.log(`im ready to leave`)
@@ -269,6 +282,7 @@ const SellerSettings = () => {
                     type="text"
                     value={name}
                     onChange={handleName}
+                    required
                 />     
                 <br />
                 <p className="label-email-seller-settings">Email</p>
@@ -277,6 +291,7 @@ const SellerSettings = () => {
                     type="email"
                     value={email}
                     onChange={handleEmail}
+                    required
                 />
                 <input
                     type="file"
@@ -336,6 +351,7 @@ const SellerSettings = () => {
               type="text"
               value={address}
               onChange={handleAddress}
+              required
             ></input>
             <br />
             <p className="label-form">Add/Update bio</p>
@@ -346,6 +362,7 @@ const SellerSettings = () => {
               onChange={handleBio}
               rows="4"
               cols="50"
+              required
             ></textarea>
               <input type="submit" className="submit-button" value="Save" />
           </form>
@@ -375,6 +392,13 @@ const SellerSettings = () => {
           <Modal.Title>Invalid Email</Modal.Title>
         </Modal.Header>
         <Modal.Body>This email is already taken.</Modal.Body>
+      </Modal>
+
+      <Modal show={show1} onHide={handleClose1} className="delete-modal">
+        <Modal.Header closeButton className="modal-heading">
+          <Modal.Title>Add profile picture</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Profile picture is missing</Modal.Body>
       </Modal>
     </div>
   );

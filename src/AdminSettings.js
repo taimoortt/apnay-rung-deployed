@@ -165,7 +165,7 @@ const AdminSettings = () => {
       }
     }else{
       console.log(`im ready to leave`)
-      // window.location.href = "/CustomerPanel";
+      window.location.href = "/AdminPanel";
     }
   }
 
@@ -189,6 +189,7 @@ const AdminSettings = () => {
           type="text"
           value={name}
           onChange={handleName}
+          required
         />
         <br />
         <p className="label-form">Email:</p>
@@ -197,6 +198,7 @@ const AdminSettings = () => {
           type="text"
           value={email}
           onChange={handleEmail}
+          required
         ></input>
         <br />
         <p className="label-form">To update your password, add:</p>

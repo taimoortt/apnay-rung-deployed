@@ -117,7 +117,7 @@ const Tutorials = () =>{
     <div>
       {checkSession()}
       <AdminNavbar />
-      <Memory panel="Admin Panel" page="" current="Tutorials" />
+      <Memory panel=" Admin Panel " page=" Panel " current=" Tutorials " />
       <div className="min-height-div">
       <h1>View All Tutorials </h1>
       <div className="table-responsive">

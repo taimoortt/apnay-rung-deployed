@@ -152,7 +152,7 @@ const SignupSeller = () => {
           </div>
           <br />
           <div />
-          <div className="form-inputs-security">
+          <div className="form-inputs">
             <input
               type="text"
               name="userName"
@@ -180,7 +180,7 @@ const SignupSeller = () => {
             )}
           </div>
           <br />
-          <div className="form-inputs-security">
+          <div className="form-inputs">
             <input
               type="password"
               name="password"
@@ -208,7 +208,7 @@ const SignupSeller = () => {
             )}
           </div>
           <br />
-          <div className="form-inputs-security">
+          <div className="form-inputs">
             {/* <input
               type="text"
               name="address"
@@ -257,7 +257,7 @@ const SignupSeller = () => {
 
   return (
     <div className="image">
-      <div className="content-seller">
+      <div className="content">
         {!isSubmitted ? displayPage() : ""}
         {/* <SignupSuccess /> */}
       </div>
