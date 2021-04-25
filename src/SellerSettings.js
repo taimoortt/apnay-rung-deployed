@@ -4,6 +4,9 @@ import Memory from "./Memory";
 import "./styles.css";
 import { useState, useEffect } from "react";
 import DefaultImg from "./css/upload-picture.jpeg"
+import { Modal, Button} from "react-bootstrap";
+import BottomBar from "./BottomBar";
+
 
 
 const SellerSettings = () => {
@@ -17,7 +20,12 @@ const SellerSettings = () => {
   const [errors, setErrors] = useState({});
   const [bio, setBio] = useState();
   const [picture, setPicture] = useState([]);
-  const [showPicture, setShowPicture] = useState([])
+  const [showPicture, setShowPicture] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   let tokenID = sessionStorage.getItem("Token");
   let updatePass = false;
   const session = sessionStorage.getItem("logged-in");
@@ -125,13 +133,27 @@ const SellerSettings = () => {
   }
 
   const submitHandler = async(e) => {
+    console.log(`in submit handler`)
+
     e.preventDefault()
 
-    const serverResponseData = await postData()
+    const serverResponse = await postData()
     const serverResponsePicture = await sendPicture()
-    console.log(`in submitHandler`, serverResponseData)
-    console.log(`in submitHandler`, serverResponsePicture)
 
+    console.log(serverResponse)
+    if (serverResponse.status === 400){
+      console.log(`in bad request`)
+      const responseJSON = await serverResponse.json()
+      console.log(responseJSON)
+      const wrongfields = responseJSON.wrongFields
+      if (wrongfields.includes("email") === true){
+        console.log(`in wrong email`)
+        handleShow()
+      }
+    }else{
+      console.log(`im ready to leave`)
+      window.location.href = "/SellerPanel";
+    }
   }
 
   const handleBlur = async (e) => {
@@ -268,7 +290,7 @@ const SellerSettings = () => {
                 </label> 
               </span>
             <br />
-            <br />
+            <p className="label-form">To update your password, add:</p>
             <span>
             {errors.currPass && (
               <div className="err-settings-currPass">{errors.currPass}</div>
@@ -277,7 +299,8 @@ const SellerSettings = () => {
               <div className="err-settings-newPass">{errors.newPass}</div>
             )}
             </span>
-            <span>
+            <br/>
+            <span className="password-div">
               <label className="label-form-cp">Current Password</label>
               <label className="label-form-np">New Password</label>
             </span>
@@ -307,7 +330,7 @@ const SellerSettings = () => {
               onChange={handlePhoneNo}
             ></input>
             <br />
-            <p className="label-form">Update your city</p>
+            <p className="label-form">Province</p>
             <input
               className="input-form"
               type="text"
@@ -342,10 +365,17 @@ const SellerSettings = () => {
         {
           displayPage()
         }
+
         <br/>
         <br/>
-        {/* <BottomBar /> */}
         </div>
+        <BottomBar />
+        <Modal show={show} onHide={handleClose} className="delete-modal">
+        <Modal.Header closeButton className="modal-heading">
+          <Modal.Title>Invalid Email</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This email is already taken.</Modal.Body>
+      </Modal>
     </div>
   );
 

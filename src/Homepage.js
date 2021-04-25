@@ -264,7 +264,7 @@ const Homepage = () => {
             className="delete-primary"
             onClick={handleClose}
           >
-            <Link to="./Homepage">{msg[1]}</Link>
+            <Link to="./Homepage"><a>{msg[1]}</a></Link>
           </Button>
         </Modal.Footer>
       </Modal>

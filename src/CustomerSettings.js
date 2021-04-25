@@ -3,6 +3,7 @@ import CustomerNavbar from "./AdminNavbar";
 import Memory from "./Memory";
 import BottomBar from "./BottomBar";
 import { useState, useEffect } from "react";
+import { Modal, Button} from "react-bootstrap";
 import back_image from "./css/back.png";
 import background from "./css/settings-bg.jpg"
 
@@ -16,6 +17,10 @@ const CustomerSettings = () => {
   const [customerData, setCustomerData] = useState({})
   const [errors, setErrors] = useState({});
   const [check, setCheck] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const session = sessionStorage.getItem("logged-in");
 
   let tokenID = sessionStorage.getItem("Token");
@@ -59,16 +64,18 @@ const CustomerSettings = () => {
   };
 
   async function verifyPass() {
+    const email = sessionStorage.getItem("Email")
     const response = await fetch(
-      "https://apnay-rung-api.herokuapp.com/verify",
+      "https://apnay-rung-api.herokuapp.com/customer/verify",
       {
         method: "POST",
         withCredentials: false,
         headers: {
+          Authorization:
+          `Bearer ${tokenID}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          email: email,
           password: currPass
         })
       }
@@ -96,26 +103,27 @@ const CustomerSettings = () => {
       setName(response.name)
       setEmail(response.email)
       setPhoneNo(response.phone)
-      setAddress(response.location)
+      setAddress(response.address)
     }
   );
   }, []);
 
   async function postData() {
-    const form = document.getElementById("empty-form");
-    const fileObj = new FormData(form);
-    fileObj.append("name", name);
-    fileObj.append("email", email);
+    let passChanged = false
     if (updatePass === true){
-      fileObj.append("password", newPass);
-      fileObj.append("passwordChanged", true)
+      passChanged = true
     }else{
-      fileObj.append("password", "");
-      fileObj.append("passwordChanged", false)
+      setNewPass("")
+      passChanged = false
     }
-    fileObj.append("address", address);
-    fileObj.append("phone", phoneNo);
-
+    const temp = {
+      name: name, 
+      email: email, 
+      password: newPass, 
+      passwordChanged: passChanged, 
+      address: address, 
+      phone: phoneNo, 
+    }
     const response = await fetch(
       "https://apnay-rung-api.herokuapp.com/customer/update",
       {
@@ -127,7 +135,7 @@ const CustomerSettings = () => {
           `Bearer ${tokenID}`,
           "Content-Type": "application/json"
         },
-        body: fileObj
+        body: JSON.stringify(temp)
       }
     );
     return response;
@@ -159,9 +167,26 @@ const CustomerSettings = () => {
     }
   }
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
+    console.log(`in submit handler`)
     e.preventDefault();
     const serverResponse = await postData();
+    console.log(serverResponse)
+    if (serverResponse.status === 400){
+      console.log(`in bad request`)
+      const responseJSON = await serverResponse.json()
+      console.log(responseJSON)
+      const wrongfields = responseJSON.wrongFields
+      if (wrongfields.includes("email") === true){
+        console.log(`in wrong email`)
+        handleShow()
+      }
+    }else{
+      console.log(`im ready to leave`)
+      window.location.href = "/CustomerPanel";
+    }
+
+    console.log(`printing server response`, serverResponse)
   }
 
   const displayPage = () => {
@@ -175,7 +200,7 @@ const CustomerSettings = () => {
             method="POST"
             id="empty-form"
           ></form>
-          <form className="settings-form" enctype="multipart/form-data">
+          <form className="settings-form" onSubmit={submitHandler} enctype="multipart/form-data">
             <p className="label-form">Name:</p>
             <input
               className="input-form"
@@ -201,6 +226,8 @@ const CustomerSettings = () => {
             )}
             </span>
             <br />
+            <p className="label-form">To update your password, add:</p>
+
             <span>
               <label className="label-form-cp">Current Password</label>
               <label className="label-form-np">New Password</label>
@@ -260,6 +287,12 @@ const CustomerSettings = () => {
         <br/>
         </div>
         <BottomBar />
+        <Modal show={show} onHide={handleClose} className="delete-modal">
+        <Modal.Header closeButton className="modal-heading">
+          <Modal.Title>Invalid Email</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This email is already taken.</Modal.Body>
+      </Modal>
     </div>
   );
 };

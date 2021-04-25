@@ -99,4 +99,3 @@ const ViewTutorials = () => {
 }
 
 export default ViewTutorials
-

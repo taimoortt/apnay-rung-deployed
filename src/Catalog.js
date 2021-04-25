@@ -44,7 +44,7 @@ const Catalog = () => {
   }
   const MapProvinces = () =>{
       setCallMap(false);
-    if (province !== null) {
+    if (province !== null && callMap === true) {
         if (province === `Punjab`){
         PunjabProducts();
         
@@ -66,6 +66,7 @@ const Catalog = () => {
         }
         else
         {
+          console.log("not in map")
           const getData = async (url) => {
             const response = await fetch(url, {
               method: "GET",
@@ -105,6 +106,7 @@ const Catalog = () => {
       (response) => {
         setState(response);
         console.log(response)
+        console.log("in call all")
         // console.log("in use effect")
       }
     );
@@ -265,9 +267,7 @@ const Catalog = () => {
             MapProvinces()
         }
     }
-  // const checkEffect = ()=>{
-  //   setCallEffect
-  // }
+
   return (
     <div>
       {GetNavbar()}

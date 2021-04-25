@@ -72,16 +72,17 @@ const Product = () => {
   const classes = useStyles();
   const tokenID = sessionStorage.getItem("Token");
   const usertype = sessionStorage.getItem("TypeOfUser");
+  const [addCart, setAddCart] = useState(false);
 
   const GetNavbar = () =>{
     if (tokenID === null){
       return (
-        <HomeNavbar/>
+        <HomeNavbar key={addCart}/>
       )
     }
     else if (usertype === "customer"){
       return(
-        <CustomerNavbar/>
+        <CustomerNavbar key={addCart}/>
       )
     }
     else if (usertype === "admin"){
@@ -252,6 +253,7 @@ const Product = () => {
         }
     
         sessionStorage.setItem("shoppingCart", JSON.stringify(cart));
+        setAddCart(!addCart);
         setMsg([`Product Added`,`Product has been added to your cart.`])
         handleShow()
       }

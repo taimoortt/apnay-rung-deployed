@@ -1,5 +1,8 @@
 import "./styles.css";
 import "./taimoor.css";
+import "./maham.css";
+import "./momina.css";
+import "./vafa.css";
 // Common Pages
 import Homepage from "./Homepage.js";
 import Product from "./Product.js";
