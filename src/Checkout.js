@@ -53,6 +53,7 @@ const Checkout = () => {
   }, []);
 
   const SubmitHandler = (event) => {
+    event.preventDefault();
     console.log(`submitted form`);
     let state_data = {
       name: name,
@@ -65,6 +66,7 @@ const Checkout = () => {
     }
     // console.log(state_data);
     sessionStorage.setItem("customerInformation", JSON.stringify(state_data));
+    window.location.href = "/OrderConfirmation"
   };
   const NameChangeHandler = (event) => {
     setName(event.target.value);
@@ -105,7 +107,7 @@ const Checkout = () => {
       <CustomerNavbar />
       <Memory
         panel="Customer Panel "
-        page="Shopping Cart"
+        page=" Shopping Cart "
         current=" Checkout"
       />{" "}
       <div className="min-height-div" className="image-product">
@@ -119,6 +121,7 @@ const Checkout = () => {
           name="name"
           value={name}
           onChange={NameChangeHandler}
+          required
         ></input>
         <p className="label-form-checkout"> Customer Email Address </p>
         <input
@@ -127,14 +130,16 @@ const Checkout = () => {
           name="email"
           value={email}
           onChange={EmailChangeHandler}
+          required
         ></input>
         <p className="label-form-checkout"> Customer Phone Number </p>
         <input
           className="input-form"
-          type="text"
+          type="number"
           name="phone"
           value={phone}
           onChange={PhoneChangeHandler}
+          required
         ></input>
         <p className="label-form-checkout">Shipping Address</p>
         <input
@@ -143,6 +148,7 @@ const Checkout = () => {
           name="ship_address"
           value={ship_address}
           onChange={ShippingChangeHandler}
+          required
         ></input>
         <p className="label-form-checkout">Billing Address</p>
         <label className="checkbox-form-new">
@@ -152,6 +158,7 @@ const Checkout = () => {
             name="check-billing"
             value={bill_address}
             onClick={BillingAddressChangeHandler}
+            
           ></input>
           Same as Shipping Address
         </label>
@@ -161,6 +168,7 @@ const Checkout = () => {
           name="bill_address"
           value={bill_address}
           onChange={BillingAddressAdd}
+          required
         ></input>
         <p className="label-form-checkout">Additional Information</p>
         <textarea
@@ -180,6 +188,7 @@ const Checkout = () => {
             name="payment"
             value="Cash on Delivery"
             onClick={PaymentChangeHandler}
+            required
           ></input>
           Cash on Delivery
         </label>
@@ -207,14 +216,14 @@ const Checkout = () => {
             value="Return to Cart"
           ></input>
           </Link>
-          <Link to="/OrderConfirmation">
+          {/* <Link to="/OrderConfirmation" onClick={()=>SubmitHandler()}> */}
           <input
             type="submit"
             className="submit-button3"
             value="Confirm Order"
-            onClick={SubmitHandler}
+            // onClick={SubmitHandler}
           ></input>
-          </Link>
+          {/* </Link> */}
       </form>
       </div>
       <br />

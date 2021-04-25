@@ -68,9 +68,11 @@ const OrderConfirmation = () => {
 
   const [msg, setMsg] = useState([``]);
 
-  async function sendNotification(id) {
+  async function sendNotification(allSellers) {
 
-    sellers.map( async (id,index)=>{
+    console.log(`sellers are ${allSellers}`)
+    allSellers.map( async (id,index)=>{
+      console.log(`seller id for sending ${id}`)
       const response = await fetch(
         "https://apnay-rung-api.herokuapp.com/notification/new",
         {
@@ -120,6 +122,7 @@ const OrderConfirmation = () => {
 
     console.log(`all sellers are ${allSellers}`)
     setSellers(allSellers)
+    return allSellers
     
   }
 
@@ -156,13 +159,12 @@ const OrderConfirmation = () => {
     console.log(response);
 
     if (response.status === 201 || response.status === 200 || response.status === 202) {
-      
+
+      console.log(`response is good`)
+      let temp= extractSellers()
+      sendNotification(temp)
       setMsg([`You order has been placed.`, `Back to Home`]);
       handleShow();
-      extractSellers()
-      sendNotification()
-      sessionStorage.removeItem("shoppingCart");
-      sessionStorage.removeItem("customerInformation");
     } else {
       setMsg([`Your order could not be placed.Try again.`, `Back`]);
       handleShow();
@@ -174,7 +176,10 @@ const OrderConfirmation = () => {
     setShow(false);
     if(msg[1]===`Back to Home`)
     {
+      sessionStorage.removeItem("shoppingCart");
+      sessionStorage.removeItem("customerInformation");
       window.location.href = "/Homepage";
+      
     }
 
   };
@@ -186,7 +191,7 @@ const OrderConfirmation = () => {
       <CustomerNavbar />
       <Memory
         panel="Customer Panel "
-        page="Shopping Cart / Checkout /"
+        page=" Shopping Cart / Checkout /"
         current=" Order Confirmation"
       />{" "}
       {/* when three links needed in panel, include a '/' in the middle 'page' argument */}

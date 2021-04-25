@@ -14,15 +14,13 @@ const UpdateProduct = () => {
   const [imageUpdate, setImageUpdate] = useState(false);
   const [show, setShow] = useState(false);
   const [values, setValues] = useState({
-    fileName:"Click to update image",
-    file: "",
+    fileName:"Click here to add image"
   });
   const [title, setTitle] = useState(productData.title);
   const [description, setDescription] = useState(productData.description);
   const [category, setCategory] = useState(productData.category);
   const [price, setPrice] = useState(productData.price);
   const [stock, setStock] = useState(productData.stock);
-
   const usertype = sessionStorage.getItem("TypeOfUser");
 
   const checkSession = () => {
@@ -56,7 +54,7 @@ const UpdateProduct = () => {
   async function sendImage() { //to submit data to the backend
     const form = document.getElementById("empty-form");
     const fileObj = new FormData(form);
-    fileObj.append("image", values.file, values.fileName);
+    fileObj.append("image", values.image, values.fileName);
     console.log(fileObj)
     try{
       const response = await fetch(
@@ -103,19 +101,21 @@ const UpdateProduct = () => {
     console.log(response);
     return response;
   }
+
   const fileHandler = (e) => {
+    e.preventDefault();
     console.log(e.target.files[0])
     setValues({
       ...values,
       [e.target.name]: e.target.files[0],
       tempFile: e.target.files[0].name
     });
-    values.tempFile = values.file.name;
-    setImageUpdate(true);
+    values.tempFile = values.fileName;
+    console.log(values);
   };
-
   const setFile = (event) => {
     event.preventDefault();
+    setImageUpdate(true)
     if (values.tempFile){
       values.fileName = values.tempFile
     }
@@ -165,6 +165,7 @@ const UpdateProduct = () => {
           name="title"
           value={title}
           onChange={TitleChangeHandler}
+          required
         ></input>
         <p className="label-form"> Product Description </p>
         <textarea
@@ -175,6 +176,7 @@ const UpdateProduct = () => {
           onChange={DescriptionChangeHandler}
           rows="4"
           cols="50"
+          required
         ></textarea>
         <p className="label-form"> Product Category </p>
         <select
@@ -182,6 +184,7 @@ const UpdateProduct = () => {
           name="category"
           value={category}
           onChange={CategoryChangeHandler}
+          required
         >
           
           <option value="Bags">Bags</option>
@@ -203,7 +206,7 @@ const UpdateProduct = () => {
               onChange={fileHandler}
               id="upload-photo"
             />
-            <button className="upload" onClick = {setFile}>Upload</button>
+            <button className="upload" onClick={(e)=>{setFile(e)}}>Upload</button>
           </div>
         <p className="label-form">Product Price</p>
         <input
@@ -212,6 +215,7 @@ const UpdateProduct = () => {
           name="price"
           value={price}
           onChange={PriceChangeHandler}
+          required
         ></input>
         <p className="label-form">Number of Pieces in Stock</p>
         <input
@@ -220,6 +224,7 @@ const UpdateProduct = () => {
           name="stock"
           value={stock}
           onChange={StockChangeHandler}
+          required
         ></input>
         <br />
           <input

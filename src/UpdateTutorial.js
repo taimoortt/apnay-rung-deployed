@@ -93,7 +93,7 @@ const CreateTutorial = () =>{
             <div className="tutorial-container">
 
             <div className="checkout-heading">Update Tutorial</div>
-            <form className="form-product">
+            <form className="form-product" onSubmit={SubmitHandler}>
                 <p className="label-form"> Title </p>
                 <input
                 className="input-form"
@@ -101,6 +101,7 @@ const CreateTutorial = () =>{
                 name="title"
                 value={title}
                 onChange={titleChangeHandler}
+                required
                 ></input>
                 <p className="label-form">Description</p>
                 <textarea
@@ -111,6 +112,7 @@ const CreateTutorial = () =>{
                 onChange={descriptionChangeHandler}
                 rows="4"
                 cols="50"
+                required
                 ></textarea>
                 <p className="label-form"> Link ID</p>
                 <input
@@ -119,13 +121,14 @@ const CreateTutorial = () =>{
                 name="link"
                 value={link}
                 onChange={linkChangeHandler}
+                required
                 ></input>
                 <div className="checkout-buttons">
                 <input
                     type="submit"
                     className="tutorial-btn-update"
                     value="Save"
-                    onClick={SubmitHandler}
+                    // onClick={SubmitHandler}
                 ></input>
                 </div>
             </form>
