@@ -88,7 +88,7 @@ const CreateTutorial = () =>{
     return (
         <div>
             <AdminNavbar/>
-            <Memory panel="Admin" page="Tutorials" current="Update Tutorial"/>
+            <Memory panel=" Admin Panel " page="" current="Update Tutorial"/>
             <div className="min-height-div image-product" >
             <div className="tutorial-container">
 
