@@ -159,6 +159,7 @@ const Homepage = () => {
         </p>
       </div>
       <p className="featured-prod">Explore Art by Region </p>
+      <div className="province-click">Click on a province to discover its art</div>
       <div id="image_map">
         <map name="map_example">
           <Link to="/Catalog" className="router-link" onClick={()=>addProvince("Sindh")}>
@@ -232,7 +233,7 @@ const Homepage = () => {
         <div className="grey-main">
         <img className="end-main-image" src={handshake} alt="end" />
         <div className="home-text-down">Trustworthy Sellers</div>
-        <div className="bottom-text">We care about authenticty and ensure our sellers are verified and trustworthy.</div>
+        <div className="bottom-text">We care about authenticity and ensure our sellers are verified and trustworthy.</div>
         <div className="space-bottom"></div>
         </div>
         <div className="grey-main">

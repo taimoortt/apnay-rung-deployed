@@ -209,13 +209,7 @@ const Checkout = () => {
           to us by mail or by WhatsApp to confirm your order.
           <br /> IBAN: PK48HABB12345678910
         </p>{" "}
-          <Link to="/ShoppingCart">
-          <input
-            type="submit"
-            className="return-to-cart-btn"
-            value="Return to Cart"
-          ></input>
-          </Link>
+          
           {/* <Link to="/OrderConfirmation" onClick={()=>SubmitHandler()}> */}
           <input
             type="submit"
@@ -223,6 +217,13 @@ const Checkout = () => {
             value="Confirm Order"
             // onClick={SubmitHandler}
           ></input>
+          <Link to="/ShoppingCart">
+          <input
+            type="submit"
+            className="return-to-cart-btn"
+            value="Return to Cart"
+          ></input>
+          </Link>
           {/* </Link> */}
       </form>
       </div>

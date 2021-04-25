@@ -15,11 +15,13 @@ const AdminSettings = () => {
   const [newPass, setNewPass] = useState();
   const [errors, setErrors] = useState({});
   const [show, setShow] = useState(false);
+  const [updatePass, setUpdatePass] = useState(false)
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   let tokenID = sessionStorage.getItem("Token");
-  let updatePass = false;
+  // let updatePass = false;
   const session = sessionStorage.getItem("logged-in");
   const usertype = sessionStorage.getItem("TypeOfUser");
 
@@ -55,7 +57,7 @@ const AdminSettings = () => {
     if (serverResponse.verified === true){
       console.log(`wohoo`)
       setErrors({...errors, currPass: '                     '})
-      updatePass = true;
+      setUpdatePass(true)
     }else{
       console.log(`oh shit`)
       setErrors({...errors, currPass: 'Password is incorrect'})
@@ -119,7 +121,7 @@ const AdminSettings = () => {
 
   async function postData() {
     let passChanged = false
-    if (updatePass === true){
+    if (updatePass){
       passChanged = true
     }else{
       setNewPass("")
