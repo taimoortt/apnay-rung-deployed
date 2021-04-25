@@ -180,7 +180,7 @@ const ApproveSellers = () => {
       <div className="min-height-div">
       <h1>Approve Sellers</h1>
       <div className="table-responsive">
-        <table className="table table-size">
+        <table className="table table-size-large-sellers">
           <thead>
             <tr className="top-row">
               <th>ID</th>

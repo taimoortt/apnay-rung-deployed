@@ -197,7 +197,7 @@ const OrderConfirmation = () => {
       {/* when three links needed in panel, include a '/' in the middle 'page' argument */}
       <div className="min-height-div">
       <h1>Order Confirmation</h1>
-      <h2>Order Details</h2>
+      <div className="order-details">Order Details</div>
       <div className="table-responsive">
         <table className="table table-size">
           <thead>
@@ -218,8 +218,8 @@ const OrderConfirmation = () => {
         <br />
       </div>
       <div className="shippingAddress">
-        <h3>Shipping address</h3>
-        {address}
+        <div className="order-details">Shipping address</div>
+        <div className="shipping-location">{address}</div>
       </div>
       <input
         type="submit"
@@ -228,6 +228,8 @@ const OrderConfirmation = () => {
         onClick={sendData}
       ></input>
       </div>
+      <br/>
+      <br/>
       <br/>
       <br/>
       <br/>

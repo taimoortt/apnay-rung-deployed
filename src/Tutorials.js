@@ -121,7 +121,7 @@ const Tutorials = () =>{
       <div className="min-height-div">
       <h1>View All Tutorials </h1>
       <div className="table-responsive">
-        <table className="table table-size">
+        <table className="table table-size-tutorials">
           <thead>
             <tr className="top-row">
               <th>Tutorial ID</th>

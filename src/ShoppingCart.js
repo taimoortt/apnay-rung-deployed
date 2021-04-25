@@ -241,7 +241,7 @@ const ShoppingCart = () => {
       <div className="min-height-div">
       <h1>Shopping Cart</h1>
       <div className="table-responsive">
-        <table className="table table-size">
+        <table className="table table-size-shopping">
           <thead>
             <tr className="top-row">
               <th>Product</th>
@@ -276,6 +276,9 @@ const ShoppingCart = () => {
         </div>
       </div>
       </div>
+      <br/>
+      <br/>
+      <br/>
       <BottomBar />
       <Modal
         show={show}

@@ -238,7 +238,7 @@ const ViewSellers = () => {
       <div className="min-height-div">
       <h1>View Sellers </h1>
       <div class="table-responsive">
-        <table class="table table-size">
+        <table class="table table-size-large-sellers">
           <thead>
             <tr class="top-row">
               <th>ID</th>
