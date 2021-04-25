@@ -1165,13 +1165,13 @@ h4 {
   padding: 30px;
 }
 .home-text {
-  z-index: 0;
-  position: absolute;
-  text-align: center !important;
-  top: 45%;
-  color: #ffffff;
-  font-size: 320%;
-
+    z-index: 0;
+    position: absolute;
+    text-align: center !important;
+    top: 45%;
+    color: #ffffff;
+    font-size: 320%;
+    width: 100%;
 }
 .featured-prod {
   
