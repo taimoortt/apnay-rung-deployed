@@ -228,7 +228,7 @@ const ShoppingCart = () => {
   const PanelCheck = () =>{
     if (usertype === "customer"){
       console.log(`type of user`)
-      return "Customer"
+      return "Customer Panel"
     } 
     return ""
   }

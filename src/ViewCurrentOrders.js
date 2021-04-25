@@ -120,10 +120,14 @@ const ViewCurrentOrders = () => {
       let order = orderData[index]
       const { order_id, timestamp } = order;
       return (
-        <tr className="data">
-          <td>Order ID: {order_id}</td>
-          <td>Order Date: {timestamp}</td>
-        </tr>
+        <span >
+        {/* // <tr className="data-order">
+        //   <td>Order ID: {order_id}</td>
+        //   <td>Order Date: {timestamp}</td>
+        // </tr> */}
+        <div className="order-id"><b>Order ID:</b> {order_id}</div>
+        <div className="order-date"><b>Order Date:</b> {timestamp}</div>
+        </span>
       );
     }catch{}
   }
@@ -140,7 +144,8 @@ const ViewCurrentOrders = () => {
       let index= ind
       let order = orderData[index]
         return (
-          <div>
+          <div className="customer-details-container">
+            <h3>Customer Details</h3>
             Name: {order.name}
             <br/>
             Address: {order.s_address}
@@ -245,13 +250,18 @@ const ViewCurrentOrders = () => {
       />{" "}
       <div className="min-height-div">
       <h1>Current Orders</h1>
-      <h2>Order Summary</h2>
+      <div className="order-summary-heading">Order Summary</div>
       <div>
         <div>
+          <div>
+            {
+              renderOrderData()
+            }
+          </div>
           <div className="table-responsive">
-            <table className="table table-size-currentOrders">
+            {/* <table className="table table-size-currentOrders">
               <thead>{renderOrderData()}</thead>
-            </table>
+            </table> */}
             <table className="table table-size-currentOrders1">
               <thead>
                 <tr className="top-row">
@@ -265,7 +275,6 @@ const ViewCurrentOrders = () => {
               <tbody>{renderTableData()}</tbody>
             </table>
           </div>
-          <div className="checkout-buttons">
               <button
                 className="submit-button-cancel"
                 onClick={()=>sendData(`https://apnay-rung-api.herokuapp.com/order/cancel/${getID()}`,`cancelled`)}
@@ -274,21 +283,16 @@ const ViewCurrentOrders = () => {
                 className="submit-button-confirm"
                 onClick={()=>sendData(`https://apnay-rung-api.herokuapp.com/order/confirm/${getID()}`,`confirmed`)}
               ><DoneIcon /> Confirm Order</button>
-          </div>
         </div>
         <div className="customer-details">
-          <h3>Customer Details</h3>
           {renderCustomerDetails()}
         </div>
       </div>
-      <button className="page-navigating" onClick={()=> NextPage()}>Next Page</button>
-      <button className="page-navigating" onClick={PrevPage}>Previous Page</button>
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <br/>
+      <span>
+      <button className="page-next" onClick={()=> NextPage()}>Next Page</button>
+      <button className="page-prev" onClick={PrevPage}>Previous Page</button>
+      </span>
       </div>
       <BottomBar />
       <Modal show={show} onHide={handleClose} className="delete-modal">

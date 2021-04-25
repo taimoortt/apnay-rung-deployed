@@ -133,15 +133,30 @@ const QueryForms = () => {
       const { message_id, subject, content,customer_id, timestamp} = form; //destructuring
       let time = timestamp.split(':')
       time = time[0]
+      time = time.substr(0, time.length-3)
+      let subject1 = subject
+      let content1= content
+      console.log(`printing subject`, subject1)
+
+      if (subject === "''"){
+        subject1= "No Subject"
+      }else{
+        subject1 = subject1.substr(1, subject1.length-2)
+      }
+      if (content === "''"){
+        content1 = "No content"
+      }else{
+        content1 = content1.substr(1, content1.length-2)
+      }
 
       return (
         <tr className="data">
           <td>{customer_id}</td>
           <td>{message_id}</td>
-          <td>{subject}</td>
+          <td>{subject1}</td>
           <td>{time}</td>
           <td>
-            <button className="link-v2" onClick={() => handleViewForm(id,customer_id, subject,content)}>
+            <button className="link-v2" onClick={() => handleViewForm(id,customer_id, subject1,content1)}>
               View
             </button>
             |

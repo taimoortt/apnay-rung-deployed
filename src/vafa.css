@@ -504,11 +504,11 @@ hr{
 
 .form-content{
   color: #2e2e2e; 
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .min-height-div{
-  min-height: 510px;
+  min-height: 100vh;
 }
 
 .add-to-featured{

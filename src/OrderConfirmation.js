@@ -164,7 +164,7 @@ const OrderConfirmation = () => {
       sessionStorage.removeItem("shoppingCart");
       sessionStorage.removeItem("customerInformation");
     } else {
-      setMsg([`You order could not be placed.Try again.`, `Back`]);
+      setMsg([`Your order could not be placed.Try again.`, `Back`]);
       handleShow();
     }
   }

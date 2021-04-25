@@ -166,11 +166,26 @@ const Notifications = () => {
     }
   };
 
+  const PanelCheck = () =>{
+    if (usertype === "customer"){
+      console.log(`type of user`)
+      return "Customer Panel"
+    } 
+    else if (usertype === "seller"){
+      console.log(`type of user`)
+      return "Seller Panel"
+    } 
+    else if (usertype === "admin"){
+      console.log(`type of user`)
+      return "Admin Panel"
+    } 
+  }
+
   return (
     <div>
       {checkSession()}
       {GetNavbar()}
-      <Memory panel="" page="" current="Notifications" />{" "}
+      <Memory panel={PanelCheck} page="" current="Notifications" />{" "}
       <div className="min-height-div">
       <h1>Notifications</h1>
       <br></br>
