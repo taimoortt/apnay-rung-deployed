@@ -113,6 +113,14 @@ const ViewAllProducts = () => {
         }
       }
     );
+
+    console.log(`printing in featured`, response);
+
+    if (response.status === 200 || response.status===202) {
+      
+      console.log(`processed ${!callEffect}`)
+      setCallEffect(!callEffect)
+    } 
   }
 
   const Featured = (isFeatured,id,sellerID,title) => {

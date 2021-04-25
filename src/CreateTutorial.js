@@ -84,7 +84,7 @@ const CreateTutorial = () =>{
             <div className="min-height-div" className="image-product">
               <div className="tutorial-container">
               <div className="checkout-heading">Create New Tutorial</div>
-                <form className="form-product">
+                <form className="form-product" onSubmit={SubmitHandler}>
                 <p className="label-form"> Title </p>
                 <input
                 className="input-form"
@@ -119,7 +119,7 @@ const CreateTutorial = () =>{
                     type="submit"
                     className="create-tutorial-btn"
                     value="Create"
-                    onClick={SubmitHandler}
+                    // onClick={SubmitHandler}
                 ></input>
                 </div>
               </form>

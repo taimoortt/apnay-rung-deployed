@@ -35,7 +35,7 @@ const AdminPanel = () => {
   }
   const classes = makeStyles(iconStyles)();
   return (
-    <div>
+    <div >
       {checkSession()}
       <AdminNavbar />
       <Memory panel="Admin Panel" /> 

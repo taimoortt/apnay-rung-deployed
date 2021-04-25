@@ -157,7 +157,7 @@ const Inventory = () => {
       <BottomBar />
       <Modal show={show} onHide={handleClose} className="delete-modal">
         <Modal.Header closeButton>
-          <Modal.Title>Confirm Block</Modal.Title>
+          <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this product?</Modal.Body>
         <Modal.Footer>

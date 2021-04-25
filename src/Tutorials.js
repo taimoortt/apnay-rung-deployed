@@ -155,7 +155,7 @@ const Tutorials = () =>{
             className="delete-primary"
             onClick={()=>handleClose(true)}
           >
-            Delete Product
+            Delete Tutorial
           </Button>
         </Modal.Footer>
       </Modal>

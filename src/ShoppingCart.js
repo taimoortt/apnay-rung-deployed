@@ -226,9 +226,10 @@ const ShoppingCart = () => {
     }
   }
   const PanelCheck = () =>{
+    console.log(`in panel check`)
     if (usertype === "customer"){
       console.log(`type of user`)
-      return "Customer Panel"
+      return "Customer Panel "
     } 
     return ""
   }
@@ -236,7 +237,7 @@ const ShoppingCart = () => {
   return (
     <div>
       {GetNavbar()}
-      <Memory panel={PanelCheck} page="" current=" Shopping Cart" />{" "}
+      <Memory panel={PanelCheck()} page="" current=" Shopping Cart" />{" "}
       <div className="min-height-div">
       <h1>Shopping Cart</h1>
       <div className="table-responsive">

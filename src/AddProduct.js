@@ -16,13 +16,13 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [values, setValues] = useState({
-    fileName:"Click here to choose file",
-    file: "",
+    fileName:"Click here to add image"
   });
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
   const [msg, setMsg] = useState([``]);
   const [show, setShow] = useState(false);
+  const [imageAdd, setImageAdd] = useState(false);
 
   const checkSession = () => {
     if (session === false || session === null || usertype==="admin" || usertype==="customer"){
@@ -32,51 +32,58 @@ const AddProduct = () => {
   }
   const SubmitHandler = async(event) => {
     event.preventDefault();
-    setPrice(parseInt(price))
-    setStock(parseInt(stock))
     console.log("in submit")
-    let response;
-    response = await sendData();
+    let response = "";
+    if (imageAdd === true){
+      response = await sendData();
+    }
     console.log("coming p")
     console.log(response)
-    if (response.status === 201 || response.status === 200) {
-      setMsg([`Product added to inventory successfully!`, `Back to My Panel`]);
-      handleShow();
-    } else {
-      setMsg([`There was an error while adding the product.`, `Back`]);
-      handleShow();
+    try{
+      if (response.status === 201 || response.status === 200 || response.status === 202 || response.status === 204) {
+        setMsg([`Product added to inventory successfully!`, `Back to My Panel`]);
+        handleShow();
+      } else {
+        setMsg([`There was an error while adding the product.`, `Back`]);
+        handleShow();
+      }
+    }
+    catch{
+      console.log("error")
     }
   }
 
   const fileHandler = (e) => {
+    e.preventDefault();
     console.log(e.target.files[0])
     setValues({
       ...values,
       [e.target.name]: e.target.files[0],
       tempFile: e.target.files[0].name
     });
-    values.tempFile = values.file.name;
-    // values.tempFile = values.file.name;
+    values.tempFile = values.fileName;
     console.log(values);
   };
 
-  const setFile = () => {
+  const setFile = (event) => {
+    event.preventDefault()
     if (values.tempFile){
       values.fileName = values.tempFile
+      setImageAdd(true);
     }
   }
   async function sendData() { //to submit data to the backend
     // console.log(`token is ${tokenID}`)
     const form = document.getElementById("empty-form");
     const fileObj = new FormData(form);
-    console.log(title,description, category)
     fileObj.append("title", title);
     fileObj.append("description", description);
     fileObj.append("category", category);
-    fileObj.append("image", values.file, values.fileName);
+    fileObj.append("image", values.image, values.fileName);
     fileObj.append("price", price);
     fileObj.append("stock", stock);
-    console.log("IM ERERREER")
+
+    console.log(title,description, category)
     console.log(fileObj)
     try{
       const response = await fetch(
@@ -165,6 +172,7 @@ const AddProduct = () => {
           name="category"
           // value="Bags"
           onChange={CategoryChangeHandler}
+          required
         >
           <option value="">--</option>
           <option value="Bags">Bags</option>
@@ -182,13 +190,14 @@ const AddProduct = () => {
             <input
               type="file"
               name="image"
-              accept="image/*, application/pdf"
-              placeholder="Click here to choose image"
+              // accept="image/*, application/pdf"
+              // placeholder="Click here to choose image"
               onChange={fileHandler}
+              // value ={values.fileName}
               id="upload-photo"
-              required
+              // required
             />
-            <button className="upload" onClick = {setFile}>Upload</button>
+            <button className="upload" onClick = {(e)=>{setFile(e)}}>Upload</button>
           </span>
         <p className="label-form">Product Price</p>
         <input
