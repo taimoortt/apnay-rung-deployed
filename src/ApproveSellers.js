@@ -5,24 +5,14 @@ import Memory from "./Memory";
 import BottomBar from "./BottomBar";
 import { Modal, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ApproveSellers = () => {
   const session = sessionStorage.getItem("logged-in");
   const usertype = sessionStorage.getItem("TypeOfUser");
   let tokenID = sessionStorage.getItem("Token");
-  const [state, setState] = useState([
-    {
-      seller_id: 0,
-      name: "",
-      email: "",
-      cnic: "",
-      location: "",
-      bio: null,
-      weeklyartisan: false,
-      blocked: true,
-      profile_picture: null
-    }
-  ]);
+  const [state, setState] = useState([]);
+  const [empty,SetEmpty]=useState(false)
   const checkSession = () => {
     if (session === false || session === null || usertype==="seller" || usertype==="customer"){
       sessionStorage.setItem("msg",JSON.stringify("Please Log in to Continue"))
@@ -101,16 +91,23 @@ const ApproveSellers = () => {
     
   };
   const handleClose = (changeBlock) => {
-    setShow(false);
+    setShow(false)
+    SetEmpty(false)
+    console.log(`approval is ${approval}`)
     if(changeBlock === true){
       console.log(`sending to backend`)
+      
       sendData()
       if(approval===`approve`)
       {
         sendNotification()
       }
     }
-    
+    else if(approval===`empty`)
+    {
+      console.log(`mein empty mein hun :()`)
+      window.location.href = "/AdminPanel";
+    }
   };
 
 
@@ -136,7 +133,11 @@ const ApproveSellers = () => {
 
     getData("https://apnay-rung-api.herokuapp.com/seller/all/unapproved").then(
       (response) => {
-        console.log(response);
+        if(response.length===0)
+        {
+          setApprove(`empty`)
+          SetEmpty(true)
+        }
         setState(response);
       }
     );
@@ -228,6 +229,22 @@ const ApproveSellers = () => {
           >
             {msg[2]}
             {/* {msg[2] !== "Dont block" ? <Link to="./ViewSellers">{msg[2]}</Link> : msg[2]} */}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={empty} onHide={()=>handleClose(false)} className="delete-modal">
+        <Modal.Header closeButton>
+          <Modal.Title>No New Sellers</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>You have no new requests to process.</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            className="delete-primary"
+            onClick={()=>handleClose(false)}
+          >
+            <Link to="./AdminPanel">Return to Panel</Link>
           </Button>
         </Modal.Footer>
       </Modal>

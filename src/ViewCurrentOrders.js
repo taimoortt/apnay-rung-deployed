@@ -165,6 +165,11 @@ const ViewCurrentOrders = () => {
     if (msg[1] == `Back to Home`) {
       window.location.href = "/Homepage";
     }
+    else if(empty===true)
+    {
+      SetEmpty(false)
+      window.location.href = "/SellerPanel"; 
+    }
   };
 
   const NextPage = () => {

@@ -23,21 +23,22 @@ const Memory = (props, panel) => {
 
   const middlePages = () => {
     let pages_array = [];
+    let display_pages=[];
     try {
       let page = props.page.split(" ").join("");
       // console.log(page);
       pages_array = page.split("/");
       // page_string = `/${page}`;
+      display_pages = props.page.split("/");
     } catch {
     }
     console.log(pages_array);
     return pages_array.map((element, index) => {
-      // console.log(element);
       let page_string = `/${element}`;
       // console.log(page_string);
       return (
         <span>
-          {element !== "" ? <Link to={page_string}><a>/{element}</a></Link> : null}
+          {element !== "" ? <Link to={page_string}><a>/{display_pages[index]}</a></Link> : null}
         </span>
       );
     });

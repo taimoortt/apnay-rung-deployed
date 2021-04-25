@@ -83,7 +83,7 @@ const TempSecurity = () => {
   async function sendNotification() {
 
     const response = await fetch(
-      "https://apnay-rung-api.herokuapp.com/notification/new",
+      "http://apnay-rung-api.herokuapp.com/notification/new",
       {
         method: "POST",
         withCredentials: true,

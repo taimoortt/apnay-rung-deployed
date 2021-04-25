@@ -105,7 +105,7 @@ const UploadCNIC = () => {
   async function sendNotification() {
 
     const response = await fetch(
-      "https://apnay-rung-api.herokuapp.com/notification/new",
+      "http://apnay-rung-api.herokuapp.com/notification/new",
       {
         method: "POST",
         withCredentials: true,
@@ -182,6 +182,7 @@ const UploadCNIC = () => {
     fileObj.append("email", userInfo.email);
     fileObj.append("password", userInfo.password);
     fileObj.append("cnic_image", values.file, values.fileName);
+    fileObj.append("phone", userInfo.phone);
     fileObj.append("location", userInfo.address);
     fileObj.append("sec_questions", JSON.stringify(questions_data));
 

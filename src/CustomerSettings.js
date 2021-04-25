@@ -175,7 +175,7 @@ const CustomerSettings = () => {
     if (serverResponse.status === 400){
       console.log(`in bad request`)
       const responseJSON = await serverResponse.json()
-      console.log(responseJSON)
+      console.log(`in bad request :)`, responseJSON)
       const wrongfields = responseJSON.wrongFields
       if (wrongfields.includes("email") === true){
         console.log(`in wrong email`)
@@ -207,6 +207,7 @@ const CustomerSettings = () => {
               type="text"
               value={name}
               onChange={handleName}
+              required
             />
             <br />
             <p className="label-form">Email:</p>
@@ -215,8 +216,9 @@ const CustomerSettings = () => {
               type="text"
               value={email}
               onChange={handleEmail}
+              required
             ></input>
-            <br />
+            <p className="label-form">To update your password, add:</p>
             <span>
             {errors.currPass && (
               <div className="err-settings-currPass">{errors.currPass}</div>
@@ -225,8 +227,7 @@ const CustomerSettings = () => {
               <div className="err-settings-newPass">{errors.newPass}</div>
             )}
             </span>
-            <br />
-            <p className="label-form">To update your password, add:</p>
+            <br/>
 
             <span>
               <label className="label-form-cp">Current Password</label>
@@ -256,6 +257,7 @@ const CustomerSettings = () => {
               type="tel"
               value={phoneNo}
               onChange={handlePhoneNo}
+              required
             ></input>
             <br />
             <p className="label-form">Address:</p>
@@ -266,6 +268,8 @@ const CustomerSettings = () => {
               onChange={handleAddress}
               rows="4"
               cols="50"
+              required
+
             ></textarea>
               <input type="submit" className="submit-button" value="Save" />
           </form>
