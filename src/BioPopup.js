@@ -12,11 +12,10 @@ const BioPopup = (props) => {
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
-
-                <button className="close-btn" onClick={handleClose}>Close</button>
-                <div className="Artisan"> Artisan name: {artisan.name}</div>
-                <div className="Location">Location: {artisan.location}</div>
-                <div className="Artisan Bio">Bio: {artisan.bio}</div>
+                <div className="bio-artisan-name">{artisan.name}</div>
+                <div className="bio-artisan-location"> {artisan.location}</div>
+                <div className="bio-artisan">{artisan.bio}</div>
+                <button className="close-btn" onClick={handleClose}>x</button>
                 {props.children}
             </div>
         </div>

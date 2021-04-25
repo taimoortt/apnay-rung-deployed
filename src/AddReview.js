@@ -415,7 +415,7 @@ const AddReview = () => {
             className="delete-primary"
             onClick={handleClose}
           >
-            {msg[1] !== "Back" ? <Link to="./Panel">{msg[1]}</Link> : msg[1]}
+            {msg[1] !== "Back" ? <Link to="./Panel"><a>{msg[1]}</a></Link> : msg[1]}
           </Button>
         </Modal.Footer>
       </Modal>

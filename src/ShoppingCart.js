@@ -81,25 +81,18 @@ const ShoppingCart = () => {
   const usertype = sessionStorage.getItem("TypeOfUser");
   const [msg2, setMsg2] = useState([``]);
   const [panel, setPanel] = useState("");
-  // const usertype = sessionStorage.getItem("TypeOfUser");
-
-  // const checkSession = () => {
-  //   if (usertype==="admin" || usertype==="seller"){
-  //     sessionStorage.setItem("msg",JSON.stringify("Please Log in to Continue"))
-  //     window.location.href = '/Homepage';
-  //   }
-  // }
-
+  const [addCart, setAddCart] = useState(false);
+  
   //The below block of code will give the initial total bill before any increments/decrements
   const GetNavbar = () =>{
     if (tokenID === null){
       return (
-        <HomeNavbar/>
+        <HomeNavbar key={addCart}/>
       )
     }
     else if (usertype === "customer"){
       return(
-        <CustomerNavbar/>
+        <CustomerNavbar key={addCart}/>
       )
     }
   }
@@ -132,6 +125,7 @@ const ShoppingCart = () => {
   const handleClose = (isDelete) => {
     setShow(false);
     if (isDelete) {
+      setAddCart(!addCart);
       let copyState = state.slice();
       copyState.splice(indexDelete, 1);
       sessionStorage.removeItem("shoppingCart");

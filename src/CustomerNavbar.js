@@ -14,6 +14,20 @@ const CustomerNavbar = () => {
   let tokenID = sessionStorage.getItem("Token");
   const [userstate, setUserState] = useState([]);
   const [numNotif, setNumNotif] = useState(0);
+  const [numShop, setNumShop] = useState(0);
+  let shopCart = JSON.parse(sessionStorage.getItem("shoppingCart"))
+
+  useEffect(() => {
+    const findnumShop = () =>
+    {
+      shopCart = JSON.parse(sessionStorage.getItem("shoppingCart"))
+        if (shopCart !== null){
+            console.log(shopCart.length)
+            setNumShop(JSON.parse(shopCart.length))
+        }
+    }
+    findnumShop()
+    }, []); 
   useEffect(() => {
     const getData = async (url) => {
       const response = await fetch(url, {
@@ -118,7 +132,12 @@ const CustomerNavbar = () => {
                     </a>
                 </Link>
                 <Link to="/ShoppingCart">
-                <a className="nav-item nav-link"> <ShoppingCartIcon />Cart </a>
+                <a className="nav-item nav-link"> 
+                <Badge badgeContent={numShop} color="secondary">
+                <ShoppingCartIcon />
+                </Badge>
+                {" "}Cart
+                </a>
                 </Link>
                 <Link to="/Homepage" >
                     <a className="nav-item nav-link" onClick={()=>LogoutClear()}>

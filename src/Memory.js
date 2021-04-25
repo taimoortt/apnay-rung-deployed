@@ -37,7 +37,7 @@ const Memory = (props, panel) => {
       // console.log(page_string);
       return (
         <span>
-          {element !== "" ? <Link to={page_string}>/{element}</Link> : null}
+          {element !== "" ? <Link to={page_string}><a>/{element}</a></Link> : null}
         </span>
       );
     });

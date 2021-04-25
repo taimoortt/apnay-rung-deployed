@@ -163,6 +163,8 @@ const Artisans = () => {
             <BioPopup trigger={viewForm} setTrigger={setViewForm} >
           </BioPopup>
           </div>
+          <br/>
+          <br/>
           <BottomBar />
         </div>
     );

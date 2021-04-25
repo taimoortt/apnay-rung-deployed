@@ -145,3 +145,22 @@
 .remove-wrapping {
   white-space: nowrap;
 }
+
+.delete-secondary {
+  background-color: #2e2e2e !important;
+  border: none !important;
+}
+
+.delete-primary {
+  background-color: #d67d20 !important;
+  border: none !important;
+}
+
+.delete-primary a {
+  color: white !important;
+}
+
+.delete-primary:hover,
+.delete-secondary:hover {
+  color: none;
+}

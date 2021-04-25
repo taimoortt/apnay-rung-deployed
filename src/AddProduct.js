@@ -233,7 +233,7 @@ const AddProduct = () => {
             className="delete-primary"
             onClick={handleClose}
           >
-            {msg[1] !== "Back" ? <Link to="./SellerPanel">{msg[1]}</Link> : msg[1]}
+            {msg[1] !== "Back" ? <Link to="./SellerPanel"><a>{msg[1]}</a></Link> : msg[1]}
           </Button>
         </Modal.Footer>
       </Modal>
