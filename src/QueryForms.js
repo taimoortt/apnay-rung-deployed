@@ -177,7 +177,7 @@ const QueryForms = () => {
       <div className="min-height-div">
       <h1>Query Forms </h1>
       <div className="table-responsive">
-        <table className="table table-size">
+        <table className="table table-size-shopping">
           <thead>
             <tr className="top-row">
               <th>Customer ID</th>

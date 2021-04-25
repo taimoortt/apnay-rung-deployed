@@ -217,6 +217,7 @@ const AddReview = () => {
               <td>{product[3]}</td>
               <td>  
                 <ReactStars
+                className="rating-stars"
                 count={5}
                 onChange={(value)=>ratingChanged(value,index)}
                 size={24}
@@ -369,8 +370,8 @@ const AddReview = () => {
       />
       <div className="min-height-div">
       <h1>Add Review</h1>
-      <h2>Order ID: {getID()}</h2>
-      <h2>Number of Items: {getItemLength()} </h2>
+      <div className="order-id-review">Order ID : {getID()}</div>
+      <div className="number-of-items">Number of Items : {getItemLength()} </div>
       <div className="table-responsive">
         <table className="table table-size">
           <thead>
@@ -395,8 +396,8 @@ const AddReview = () => {
       <br/>
       <br/>
       <br/>
-      <button className="page-navigating" onClick={NextPage}>Next Page</button>
-      <button className="page-navigating" onClick={PrevPage}>Previous Page</button>
+      <button className="page-next-review" onClick={NextPage}>Next Page</button>
+      <button className="page-prev" onClick={PrevPage}>Previous Page</button>
       <br/>
       <br/>
       <br/>

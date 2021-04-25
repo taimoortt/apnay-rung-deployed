@@ -21,7 +21,7 @@ const Counter = (props) => {
     props.qtyFunc(props.qty + 1);
   };
   const decrement = () => {
-    if (props.qty !== 0) {
+    if (props.qty !== 1) {
       props.qtyFunc(props.qty - 1);
     }
   };
@@ -65,7 +65,7 @@ const StyledRating = withStyles({
   },
   iconHover: {
     color: "#ff3d47"
-  }
+  },
 })(Rating);
 const Product = () => {
   const [qty, setQuantity] = useState(1);
@@ -303,7 +303,7 @@ const Product = () => {
               </Box>
            </div>
             <div className="product-desc">
-              <h4>Description:</h4>
+              <h4>Description</h4>
               <p className="description">{productData.Description}</p>
             </div>
             <div>
@@ -327,11 +327,9 @@ const Product = () => {
             </Button>
             </div>
             <div className="productpage-artisan">
-            <div className="artisan-product-page">
               <h3 className="artisan-title">Artisan</h3>
               <div className="artisan-name">{ArtisanData.name}</div>
               <div className="artisan-bio">{sellerBio}</div>
-            </div>
             </div>
           </div>
         </div>
@@ -348,6 +346,7 @@ const Product = () => {
       {GetNavbar()}
       <Memory panel="Catalog " current={product.title} />
       {renderProduct()}
+      <br/>
       <br/>
       <br/>
       <BottomBar />

@@ -186,7 +186,7 @@ const ViewAllProducts = () => {
       } = product; //destructuring
       return (
         <tr className="data">
-          <td><img src={image} alt={title} id="image"/></td>
+          <td><img src={image} alt={title} className="shoppingCart-image" /></td>
           <td style={{whiteSpace:"nowrap"}}>{title}</td>
           <td>{seller_id}</td>
           <td style={{whiteSpace:"nowrap"}}>{seller_name}</td>
@@ -210,7 +210,7 @@ const ViewAllProducts = () => {
       <div className="min-height-div">
       <h1>View All Products</h1>
       <div className="table-responsive">
-        <table className="table table-size">
+        <table className="table table-size-large-products">
           <thead>
             <tr className="top-row">
               <th>Product</th>

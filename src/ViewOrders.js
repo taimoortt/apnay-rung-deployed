@@ -84,6 +84,7 @@ const ViewOrders = () => {
         timestamp
       } = order; //destructuring
 
+  
       let date= (timestamp.split(" "))[0]
       // console.log(order_id)
       // console.log(`items ${items}`)
@@ -108,7 +109,7 @@ const ViewOrders = () => {
       {/* when three links needed in panel, include a '/' in the middle 'page' argument */}
       <h1>View All Orders </h1>
       <div class="table-responsive">
-        <table class="table table-size">
+        <table class="table table-size-large-sellers">
           <thead>
             <tr class="top-row">
               <th className="remove-wrapping">Order ID</th>

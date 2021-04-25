@@ -110,7 +110,7 @@ const Inventory = () => {
       return (
         <tr className="data">
           <td>
-            <img src={image} alt="Italian Trulli" id="image" />
+            <img src={image} alt="Italian Trulli" className="shoppingCart-image"/>
           </td>
           <td>{title}</td>
           <td>{price}</td>
