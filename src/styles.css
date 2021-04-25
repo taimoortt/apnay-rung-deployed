@@ -903,7 +903,8 @@ h4 {
   margin-right: 11.5%;
   top: 57%;
   color: #ffffff;
-  font-size: 320%;
+  font-size: 290%;
+  font-display: bold;
 }
 .main {
   width: 80%;
@@ -1122,7 +1123,7 @@ h4 {
   text-align: center !important;
   top: 45%;
   color: #ffffff;
-  font-size: 350%;
+  font-size: 320%;
 
 }
 .featured-prod {

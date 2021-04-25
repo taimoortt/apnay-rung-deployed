@@ -268,11 +268,26 @@ const Catalog = () => {
         }
     }
 
+    const PanelCheck = () =>{
+      if (usertype === "customer"){
+        console.log(`type of user`)
+        return "Customer Panel"
+      } 
+      else if (usertype === "seller"){
+        console.log(`type of user`)
+        return "Seller Panel"
+      } 
+      else if (usertype === "admin"){
+        console.log(`type of user`)
+        return "Admin Panel"
+      } 
+    }
+
   return (
     <div>
       {GetNavbar()}
       {checkMap()}
-      <Memory panel="" page="" current="Catalog" />{" "}
+      <Memory panel={PanelCheck} page="" current="Catalog" />{" "}
       <div className="min-height-div">
       <h1>Catalog</h1>
       <br></br>

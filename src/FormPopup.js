@@ -12,11 +12,11 @@ const FormPopup = (props) => {
         <div className="popup">
             <div className="popup-inner">
 
-                <button className="close-btn" onClick={handleClose}>Close</button>
-                <div className="form-id">Form ID: {form.formID}</div>
-                <div className="customer-id">Customer ID: {form.customerID}</div>
-                <div className="form-subject">Subject: {form.subject}</div>
-                <div className="form-content">Message: {form.content}</div>
+                <button className="close-btn" onClick={handleClose}>x</button>
+                <div className="form-id"><b>Form ID:</b> {form.formID}</div>
+                <div className="customer-id"><b>Customer ID:</b> {form.customerID}</div>
+                <div className="form-subject"><b>Subject:</b> {form.subject}</div>
+                <div className="form-content"><b>Message: </b>{form.content}</div>
                 {props.children}
             </div>
         </div>

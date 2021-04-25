@@ -80,7 +80,7 @@ const CreateTutorial = () =>{
         <div>
             {checkSession()}
             <AdminNavbar/>
-            <Memory panel="Admin" page="Tutorials" current="Create Tutorial"/>
+            <Memory panel="Admin Panel" page="" current="Create Tutorial"/>
             <div className="min-height-div" className="image-product">
               <div className="tutorial-container">
               <div className="checkout-heading">Create New Tutorial</div>
