@@ -53,7 +53,7 @@ const AdminPanel = () => {
                     className={classes.buttoncolor}
                   />
                 </span>
-                <span className="text">View All Customers</span>
+                <span className="text">View Customers</span>
               </button>
             </Link>
           </div>
@@ -65,7 +65,7 @@ const AdminPanel = () => {
                     className={classes.buttoncolor}
                   />
                 </span>
-                <span className="text">View All Products</span>
+                <span className="text">View Products</span>
               </button>
             </Link>
           </div>
@@ -77,7 +77,7 @@ const AdminPanel = () => {
                     className={classes.buttoncolor}
                   />
                 </span>
-                <span className="text">View All Orders</span>
+                <span className="text">View Orders</span>
               </button>
             </Link>
           </div>
@@ -116,7 +116,7 @@ const AdminPanel = () => {
                     className={classes.buttoncolor}
                   />
                 </span>
-                <span className="text">View All Sellers</span>
+                <span className="text">View Sellers</span>
               </button>
             </Link>
           </div>
