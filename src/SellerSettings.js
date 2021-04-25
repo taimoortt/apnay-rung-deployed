@@ -23,6 +23,8 @@ const SellerSettings = () => {
   const [showPicture, setShowPicture] = useState([]);
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
+  const [updatePass, setUpdatePass] = useState(false)
+
 
 
   const handleClose = () => setShow(false);
@@ -32,7 +34,7 @@ const SellerSettings = () => {
   
   
   let tokenID = sessionStorage.getItem("Token");
-  let updatePass = false;
+  // let updatePass = false;
   const session = sessionStorage.getItem("logged-in");
   const usertype = sessionStorage.getItem("TypeOfUser");
 
@@ -105,7 +107,7 @@ const SellerSettings = () => {
 
   async function postData() {
     let passChanged = false
-    if (updatePass === true){
+    if (updatePass){
       passChanged = true
     }else{
       setNewPass("")
@@ -162,6 +164,9 @@ const SellerSettings = () => {
       console.log(`printing chekc`, check)
       if (check[0] !=="https"){
         handleShow1()
+      }else{
+        console.log(`im ready to leave`)
+      window.location.href = "/SellerPanel";
       }
     }else{
       console.log(`im ready to leave`)
@@ -177,7 +182,7 @@ const SellerSettings = () => {
     if (serverResponse.verified === true){
       console.log(`wohoo`)
       setErrors({...errors, currPass: '                     '})
-      updatePass = true;
+      setUpdatePass(true)
     }else{
       console.log(`oh shit`)
       setErrors({...errors, currPass: 'Password is incorrect'})
