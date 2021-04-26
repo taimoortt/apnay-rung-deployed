@@ -151,7 +151,7 @@ const Homepage = () => {
         <div className="home-text">DISCOVER | CONNECT | EMPOWER</div>
       </div>
 
-      <p className="featured-prod">Featured Products </p>
+      <p className="featured-prod2">Featured Products </p>
       <div className="itemboxes">{renderProducts()}</div>
       <div className="orange-home-bar">
         <p>
