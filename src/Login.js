@@ -16,6 +16,8 @@ const TempLogin = () => {
 
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
+  const [show2, setShow2] = useState(false);
+
 
   const [check, setCheck] = useState([])
 
@@ -24,9 +26,11 @@ const TempLogin = () => {
 
   const handleClose1 = () => setShow1(false);
   const handleShow1 = () => {
-    console.log(`hello jee`)
     setShow1(true)
   };
+
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
 
   //routes to catalog page if validation clears
 
@@ -65,9 +69,18 @@ const TempLogin = () => {
           window.location.href = "/AdminPanel";
         }
       }else{
-        console.log(`in incorrect pass branch`);
-        errors.password = "password is incorrect";
-        handleShow();
+        if (serverResponse.hasOwnProperty('approved')) {
+          console.log(`in approval false`)
+          if (serverResponse.approved === false){
+            handleShow2()
+          }
+        }else{
+          errors.password = "password is incorrect";
+          handleShow();
+
+        }
+
+ 
       }
     } 
   };
@@ -239,6 +252,18 @@ const TempLogin = () => {
 
         </Modal.Footer>
       </Modal>
+
+      <Modal show={show2} onHide={handleClose2} className="delete-modal">
+        <Modal.Header closeButton className="modal-heading">
+          <Modal.Title>Approval pending </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Sorry! Your account has not been approved by Apnay Rung yet.</Modal.Body>
+        <Modal.Footer>
+
+        </Modal.Footer>
+      </Modal>
+
+      
     </div>
   );
 };
